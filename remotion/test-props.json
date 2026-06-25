@@ -1,0 +1,11 @@
+{
+  "hook": "Tired of wasting hours on content creation?",
+  "style": "viral_caption",
+  "scenes": [
+    { "text": "Stop scrolling! ⏳", "duration": 2 },
+    { "text": "Manual content creation is SO yesterday! 🤦‍♂️", "duration": 2 },
+    { "text": "FitAI creates fitness content in minutes! 🚀", "duration": 2 },
+    { "text": "Join us and reclaim your time! ⌛️", "duration": 2 }
+  ],
+  "cta": "Try FitAI today and save hours!"
+}

@@ -1,0 +1,50 @@
+{
+  "name": "fitai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "FitCore AI — unified coaching platform",
+  "scripts": {
+    "dev": "next dev --webpack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "env:check": "node scripts/check-production-env.mjs",
+    "security:test": "node scripts/two-coach-security-test.mjs",
+    "prelaunch:check": "npm run env:check",
+    "launch:check": "npm run typecheck && npm run build && npm run security:test",
+    "render:video": "node scripts/render-video.mjs",
+    "render:video:id": "node scripts/render-video-by-id.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.103.0",
+    "@remotion/bundler": "^4.0.476",
+    "@remotion/cli": "^4.0.476",
+    "@remotion/player": "^4.0.476",
+    "@remotion/renderer": "^4.0.476",
+    "@supabase/ssr": "^0.10.3",
+    "@supabase/supabase-js": "^2.108.1",
+    "framer-motion": "^12.40.0",
+    "jspdf": "^4.2.1",
+    "lucide-react": "^1.16.0",
+    "next": "16.2.6",
+    "openai": "^6.39.1",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "react-hook-form": "^7.77.0",
+    "recharts": "^3.8.1",
+    "remotion": "^4.0.476",
+    "stripe": "^22.2.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.6",
+    "supabase": "^2.101.0",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
