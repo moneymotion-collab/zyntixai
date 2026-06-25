@@ -2,17 +2,20 @@
  * CLI check for required production environment variables.
  * Run: npm run env:check
  *
- * Keep PRODUCTION_ENV_VARS in sync with lib/billing/production-env.ts
+ * Keep in sync with lib/billing/production-env.ts
  */
 import { readFileSync } from "node:fs"
 import { resolve } from "node:path"
 
-const PRODUCTION_ENV_VARS = [
+const STRIPE_PRODUCTION_ENV_VARS = [
   "STRIPE_SECRET_KEY",
   "STRIPE_WEBHOOK_SECRET",
   "STRIPE_PRICE_BASIC",
   "STRIPE_PRICE_PRO",
   "STRIPE_PRICE_BUSINESS",
+]
+
+const CORE_PRODUCTION_ENV_VARS = [
   "NEXT_PUBLIC_URL",
   "SUPABASE_SERVICE_ROLE_KEY",
   "CRON_SECRET",
@@ -44,14 +47,32 @@ function loadEnvFile(filePath) {
 loadEnvFile(resolve(process.cwd(), ".env.local"))
 loadEnvFile(resolve(process.cwd(), ".env"))
 
+function isBillingEnabled(env = process.env) {
+  const flag = env.BILLING_ENABLED?.trim().toLowerCase()
+  if (flag === "0" || flag === "false") return false
+  if (flag === "1" || flag === "true") return true
+  return Boolean(env.STRIPE_SECRET_KEY?.trim())
+}
+
+function getRequiredProductionEnvVars(env = process.env) {
+  if (isBillingEnabled(env)) {
+    return [...STRIPE_PRODUCTION_ENV_VARS, ...CORE_PRODUCTION_ENV_VARS]
+  }
+  return [...CORE_PRODUCTION_ENV_VARS]
+}
+
 function checkProductionEnv(env = process.env) {
-  const missing = PRODUCTION_ENV_VARS.filter((key) => !env[key]?.trim())
-  return { ok: missing.length === 0, missing }
+  const required = getRequiredProductionEnvVars(env)
+  const missing = required.filter((key) => !env[key]?.trim())
+  return { ok: missing.length === 0, missing, required }
 }
 
 function formatReport(result) {
   if (result.ok) {
-    return `All ${PRODUCTION_ENV_VARS.length} required production environment variables are set.`
+    const billingNote = isBillingEnabled()
+      ? " (billing enabled)"
+      : " (billing disabled — Stripe vars not required)"
+    return `All ${result.required.length} required production environment variables are set${billingNote}.`
   }
 
   return [
