@@ -672,6 +672,7 @@ export default function SettingsPage() {
       }
 
       setToast(successToast("gymSettingsSaved"))
+      await loadSettings()
     } catch {
       setErrorMessage("Could not save gym settings.")
     } finally {
@@ -699,6 +700,7 @@ export default function SettingsPage() {
       }
 
       setToast(successToast("instagramConnectionSaved"))
+      await loadInstagramConnection()
     } catch {
       setErrorMessage("Could not save Instagram connection.")
     } finally {

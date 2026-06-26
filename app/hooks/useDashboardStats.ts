@@ -5,6 +5,7 @@ import { fetchDashboardStats } from "@/lib/dashboard-stats"
 import { resolveLinkedMemberId } from "@/lib/member-link"
 import { createClient } from "@/lib/supabase/client"
 import type { DashboardStats } from "@/lib/types/dashboard-stats"
+import { useCoachingCoreChanged } from "./useCoachingCoreChanged"
 import { useDebouncedCallback } from "./useDebouncedCallback"
 import { useRole } from "./useRole"
 
@@ -64,6 +65,10 @@ export function useDashboardStats() {
 
     return () => window.removeEventListener("focus", onFocus)
   }, [role, roleLoading, isMember, load])
+
+  useCoachingCoreChanged(() => {
+    void debouncedLoad()
+  }, isMember && !roleLoading)
 
   useEffect(() => {
     if (!isMember || !memberId) return

@@ -79,7 +79,6 @@ export default function MemberDetailPage() {
   const [savingTargets, setSavingTargets] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [toast, setToast] = useState<ToastPayload | null>(null)
-  const [profileRefreshKey, setProfileRefreshKey] = useState(0)
   const [activityRefreshKey, setActivityRefreshKey] = useState(0)
 
   const bumpActivity = useCallback(() => {
@@ -431,13 +430,12 @@ export default function MemberDetailPage() {
           memberId={member.id}
           fallbackWeight={member.current_weight}
           fallbackGoalWeight={member.target_weight}
-          refreshKey={profileRefreshKey}
+          refreshKey={activityRefreshKey}
         />
 
         <ClientProfileCard
           memberId={member.id}
           onSaved={() => {
-            setProfileRefreshKey((key) => key + 1)
             refreshMemberActivity()
             setToast(successToast("profileSaved"))
           }}

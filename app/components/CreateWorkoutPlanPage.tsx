@@ -2,13 +2,14 @@
 
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { useEffect, useMemo, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 import ProtectedShell from "./ProtectedShell"
 import ExercisePickerModal from "@/components/exercises/ExercisePickerModal"
 import SelectedWorkoutExerciseList from "@/components/workouts/SelectedWorkoutExerciseList"
 import { SAAS_EMPTY } from "@/lib/copy/saas-empty-states"
 import Toast, { type ToastPayload } from "./Toast"
 import { successToast } from "@/lib/copy/success-toasts"
+import { useCoachingCoreChanged } from "@/app/hooks/useCoachingCoreChanged"
 import { notifyCoachingCoreChanged } from "@/lib/coaching-core/notify"
 import { getCoachScope } from "@/lib/auth/coach-scope"
 import type { Database } from "@/lib/database.types"
@@ -67,12 +68,12 @@ export default function CreateWorkoutPlanPage({
   const fieldTextareaClass = premiumTextareaClass
   const fieldSelectClass = premiumSelectClass
 
-  async function fetchTemplates() {
+  const fetchTemplates = useCallback(async () => {
     const res = await fetch("/api/workout-templates")
     const json = await res.json()
 
     setTemplates(json.templates || [])
-  }
+  }, [])
 
   useEffect(() => {
     const fetchMembers = async () => {
@@ -106,7 +107,11 @@ export default function CreateWorkoutPlanPage({
 
   useEffect(() => {
     void fetchTemplates()
-  }, [])
+  }, [fetchTemplates])
+
+  useCoachingCoreChanged(() => {
+    void fetchTemplates()
+  })
 
   const resetForm = () => {
     setTitle("")
@@ -294,6 +299,7 @@ export default function CreateWorkoutPlanPage({
     }
 
     setToast(successToast("workoutTemplateSaved"))
+    notifyCoachingCoreChanged()
     await fetchTemplates()
     setLoading(false)
   }
