@@ -6,6 +6,7 @@ import SyncRealAnalyticsButton from "@/components/marketing/SyncRealAnalyticsBut
 import AnalyticsErrorState from "@/components/marketing/content-performance/AnalyticsErrorState"
 import AnalyticsLoadingSkeleton from "@/components/marketing/content-performance/AnalyticsLoadingSkeleton"
 import ContentPerformanceAnalyticsDashboard from "@/components/marketing/content-performance/ContentPerformanceAnalyticsDashboard"
+import { useMarketingCoreChanged } from "@/app/hooks/useMarketingCoreChanged"
 import { useIsDemoWorkspace } from "@/app/hooks/useIsDemoWorkspace"
 import { buildMarketingAnalyticsApiResponse } from "@/lib/marketing/content-performance/build-api-response"
 import type { MarketingAnalyticsApiResponse } from "@/lib/marketing/content-performance/build-api-response"
@@ -45,6 +46,11 @@ export default function MarketingAnalyticsPageContent() {
     if (demoLoading) return
     void loadAnalytics()
   }, [demoLoading, loadAnalytics])
+
+  useMarketingCoreChanged(() => {
+    if (demoLoading) return
+    void loadAnalytics()
+  }, !demoLoading)
 
   if (loading) {
     return <AnalyticsLoadingSkeleton />

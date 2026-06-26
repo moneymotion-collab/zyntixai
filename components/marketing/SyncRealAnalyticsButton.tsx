@@ -7,6 +7,7 @@ import {
   syncAnalytics,
   type SyncAnalyticsResponse,
 } from "@/lib/marketing/sync-analytics-client"
+import { notifyMarketingCoreChanged } from "@/lib/marketing/notify"
 
 function formatMode(mode: SyncAnalyticsResponse["mode"]) {
   if (mode === "mock") return "Demo mock data"
@@ -36,6 +37,7 @@ export default function SyncRealAnalyticsButton({
 
       if (response.success && response.mode !== "skipped") {
         onSynced?.()
+        notifyMarketingCoreChanged()
         router.refresh()
       }
     } catch (err) {

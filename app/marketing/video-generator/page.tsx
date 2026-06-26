@@ -1,9 +1,10 @@
 "use client"
 
-import { type FormEvent, useEffect, useState } from "react"
+import { type FormEvent, useCallback, useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { Loader2 } from "lucide-react"
 import ProtectedShell from "@/app/components/ProtectedShell"
+import { useMarketingCoreChanged } from "@/app/hooks/useMarketingCoreChanged"
 import Toast, { type ToastPayload } from "@/app/components/Toast"
 import { successToast } from "@/lib/copy/success-toasts"
 import SaasEmptyState from "@/components/ui/saas-empty-state"
@@ -21,6 +22,7 @@ import VideoScriptPreview from "@/components/marketing/VideoScriptPreview"
 import type { GeneratedVideoFlowState } from "@/lib/marketing/generated-video-record"
 import { addVideoToCalendar } from "@/lib/marketing/add-video-to-calendar-client"
 import { scheduleMarketingVideo } from "@/lib/marketing/schedule-marketing-video-client"
+import { notifyMarketingCoreChanged } from "@/lib/marketing/notify"
 import type { MarketingVideo, VideoScript } from "@/lib/marketing/video-script-types"
 import {
   buildVideoCalendarWorkflowUrl,
@@ -303,6 +305,15 @@ export default function VideoGeneratorPage() {
     return true
   }
 
+  const handleMarketingCoreChanged = useCallback(() => {
+    const videoProjectId = result?.videoProject?.id
+    if (videoProjectId) {
+      void refreshVideoProject(videoProjectId)
+    }
+  }, [result?.videoProject?.id])
+
+  useMarketingCoreChanged(handleMarketingCoreChanged)
+
   function scrollToVideoGeneratorForm() {
     document
       .getElementById("video-generator-form")
@@ -392,6 +403,7 @@ export default function VideoGeneratorPage() {
             }
           : data.script,
       })
+      notifyMarketingCoreChanged()
     } catch (err) {
       console.log("Error", err)
       setFlowState("failed")
@@ -446,6 +458,7 @@ export default function VideoGeneratorPage() {
               : "Scene images are up to date.",
         }),
       )
+      notifyMarketingCoreChanged()
     } catch (err) {
       setError(err instanceof Error ? err.message : "Image generation failed")
     } finally {
@@ -487,6 +500,7 @@ export default function VideoGeneratorPage() {
       await refreshVideoProject(result.videoProject.id)
 
       setVoiceoverToast(successToast("videoVoiceoverGenerated"))
+      notifyMarketingCoreChanged()
     } catch (err) {
       setError(err instanceof Error ? err.message : "Voiceover generation failed")
     } finally {
@@ -550,6 +564,7 @@ export default function VideoGeneratorPage() {
           router.push(`${calendarUrl}&status=scheduled`)
         }, 900)
       }
+      notifyMarketingCoreChanged()
     } catch (err) {
       setError(err instanceof Error ? err.message : "Could not schedule video.")
     } finally {
@@ -614,6 +629,7 @@ export default function VideoGeneratorPage() {
           router.push(calendarUrl)
         }, 900)
       }
+      notifyMarketingCoreChanged()
     } catch (err) {
       setError(
         err instanceof Error ? err.message : "Could not add video to calendar.",
@@ -719,6 +735,7 @@ export default function VideoGeneratorPage() {
               }
             : prev,
         )
+        notifyMarketingCoreChanged()
       }
     } catch (err) {
       setFlowState("failed")
@@ -811,6 +828,7 @@ export default function VideoGeneratorPage() {
               }
             : prev,
         )
+        notifyMarketingCoreChanged()
       }
     } catch (err) {
       setFlowState("failed")

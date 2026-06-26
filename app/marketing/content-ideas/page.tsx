@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react"
 import { Loader2, Sparkles, Zap } from "lucide-react"
 import ProtectedShell from "@/app/components/ProtectedShell"
+import { useMarketingCoreChanged } from "@/app/hooks/useMarketingCoreChanged"
 import ContentIdeaCard from "@/components/marketing/ContentIdeaCard"
 import {
   CONTENT_IDEA_COUNTS,
@@ -20,6 +21,8 @@ import {
 } from "@/lib/marketing/content-goals"
 import { isMarketingDemoMode } from "@/lib/marketing/demo-mode"
 import { improveContentIdeaDemo } from "@/lib/marketing/improve-content-idea"
+import { fetchContentIdeaDrafts } from "@/lib/marketing/content-ideas-client"
+import { notifyMarketingCoreChanged } from "@/lib/marketing/notify"
 import { mockIdeas } from "@/lib/marketing/mock-ideas"
 import SaasEmptyState from "@/components/ui/saas-empty-state"
 import MarketingGenerationStagePanel from "@/components/marketing/MarketingGenerationStagePanel"
@@ -197,6 +200,15 @@ export default function ContentIdeasPage() {
     }
   }, [demoMode])
 
+  useMarketingCoreChanged(() => {
+    if (demoMode) return
+    void fetchContentIdeaDrafts()
+      .then((drafts) => setIdeas(drafts))
+      .catch(() => {
+        // Keep existing ideas when a background refresh fails.
+      })
+  })
+
   const showEmptyState = useMemo(
     () => ideas.length === 0 && !loading && !demoMode,
     [ideas.length, loading, demoMode],
@@ -228,6 +240,7 @@ export default function ContentIdeasPage() {
       if (demoMode) {
         setIdeas(mockIdeas.slice(0, ideaCount))
         setToast(successToast("contentIdeasGenerated"))
+        notifyMarketingCoreChanged()
         return
       }
 
@@ -261,6 +274,7 @@ export default function ContentIdeasPage() {
             "Ideas saved as drafts. Add them to your calendar when ready.",
         }),
       )
+      notifyMarketingCoreChanged()
     } catch {
       setErrorMessage("Could not generate ideas.")
     } finally {
@@ -284,6 +298,7 @@ export default function ContentIdeasPage() {
         ),
       )
       setToast(successToast("postImproved"))
+      notifyMarketingCoreChanged()
       setImprovingId(null)
       return
     }
@@ -315,6 +330,7 @@ export default function ContentIdeasPage() {
           description: data.warning ?? "AI suggestions have been applied.",
         }),
       )
+      notifyMarketingCoreChanged()
     } catch {
       setErrorMessage("Could not improve post.")
     } finally {
@@ -338,6 +354,7 @@ export default function ContentIdeasPage() {
         ),
       )
       setToast(successToast("postAddedToCalendar"))
+      notifyMarketingCoreChanged()
       setSchedulingId(null)
       return
     }
@@ -375,6 +392,7 @@ export default function ContentIdeasPage() {
         ),
       )
       setToast(successToast("postAddedToCalendar"))
+      notifyMarketingCoreChanged()
     } catch {
       setErrorMessage("Could not add to calendar.")
     } finally {

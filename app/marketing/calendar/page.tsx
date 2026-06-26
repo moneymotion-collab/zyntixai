@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react"
 import { Calendar, Loader2, Zap } from "lucide-react"
 import ProtectedShell from "@/app/components/ProtectedShell"
+import { useMarketingCoreChanged } from "@/app/hooks/useMarketingCoreChanged"
 import SaasEmptyState from "@/components/ui/saas-empty-state"
 import Toast, { type ToastPayload } from "@/app/components/Toast"
 import { successToast } from "@/lib/copy/success-toasts"
@@ -40,6 +41,7 @@ import {
   resolveScheduledFor,
 } from "@/lib/marketing/posting-times"
 import { schedulePost } from "@/lib/marketing/schedule-post"
+import { notifyMarketingCoreChanged } from "@/lib/marketing/notify"
 
 function normalizeApiPost(post: CalendarPost): CalendarPost {
   return {
@@ -98,6 +100,11 @@ export default function CalendarPage() {
 
     void loadInstagramConnection()
   }, [])
+
+  useMarketingCoreChanged(() => {
+    if (demoLoading || demoMode) return
+    void fetchPosts()
+  }, !demoLoading)
 
   const postsByDay = useMemo(() => groupPostsByDay(posts), [posts])
   const monthCells = useMemo(
@@ -192,6 +199,7 @@ export default function CalendarPage() {
         ),
       )
       setToast(successToast("postApproved"))
+      notifyMarketingCoreChanged()
       setApprovingId(null)
       return
     }
@@ -228,6 +236,7 @@ export default function CalendarPage() {
         ),
       )
       setToast(successToast("postApproved"))
+      notifyMarketingCoreChanged()
     } catch (err) {
       setErrorMessage(
         err instanceof Error ? err.message : "Could not approve post.",
@@ -263,6 +272,7 @@ export default function CalendarPage() {
         ),
       )
       setToast(successToast("instagramPublished"))
+      notifyMarketingCoreChanged()
       setPublishingId(null)
       return
     }
@@ -281,6 +291,7 @@ export default function CalendarPage() {
       }
 
       setToast(successToast("instagramPublished"))
+      notifyMarketingCoreChanged()
       await fetchPosts()
     } catch (err) {
       setErrorMessage(
@@ -315,6 +326,7 @@ export default function CalendarPage() {
         ),
       )
       setToast(successToast("postScheduled"))
+      notifyMarketingCoreChanged()
       setSchedulingId(null)
       return
     }
@@ -323,6 +335,7 @@ export default function CalendarPage() {
       await schedulePost(id, scheduled_for, "scheduled")
       await fetchPosts()
       setToast(successToast("postScheduled"))
+      notifyMarketingCoreChanged()
     } catch (err) {
       setErrorMessage(
         err instanceof Error ? err.message : "Could not schedule post.",

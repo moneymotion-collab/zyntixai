@@ -4,6 +4,7 @@ import { Suspense, useEffect, useMemo, useRef, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { Loader2, Zap } from "lucide-react"
 import ProtectedShell from "@/app/components/ProtectedShell"
+import { useMarketingCoreChanged } from "@/app/hooks/useMarketingCoreChanged"
 import ConfirmDialog from "@/app/components/ConfirmDialog"
 import SaasEmptyState from "@/components/ui/saas-empty-state"
 import Toast, { type ToastPayload } from "@/app/components/Toast"
@@ -41,6 +42,7 @@ import {
   isApprovedViralStatus,
 } from "@/lib/marketing/post-pipeline"
 import { shouldShowTikTokPublishingComingSoon } from "@/lib/marketing/post-eligibility"
+import { notifyMarketingCoreChanged } from "@/lib/marketing/notify"
 
 function StatusTabs({
   selected,
@@ -216,6 +218,10 @@ function ScheduledPostsPageContent() {
     void loadPosts()
   }, [statusFilter, demoMode])
 
+  useMarketingCoreChanged(() => {
+    void loadPosts()
+  })
+
   async function clearAllPosts() {
     if (demoMode || clearing || busyByPost) return
 
@@ -247,6 +253,7 @@ function ScheduledPostsPageContent() {
             : "No posts were available to remove.",
         }),
       )
+      notifyMarketingCoreChanged()
     } catch {
       setErrorMessage("Kon posts niet verwijderen.")
     } finally {
@@ -306,6 +313,7 @@ function ScheduledPostsPageContent() {
 
       setPosts((current) => [newPost, ...current])
       setToast(successToast("similarPostGenerated"))
+      notifyMarketingCoreChanged()
       clearPostBusy()
       return
     }
@@ -320,6 +328,7 @@ function ScheduledPostsPageContent() {
           description: warning ?? "Review the draft in your publishing pipeline.",
         }),
       )
+      notifyMarketingCoreChanged()
     } catch (error) {
       setErrorMessage(
         error instanceof Error ? error.message : "Could not generate similar post.",
@@ -377,6 +386,7 @@ function ScheduledPostsPageContent() {
         ),
       )
       setToast(successToast("postScored"))
+      notifyMarketingCoreChanged()
       clearPostBusy()
       return
     }
@@ -403,6 +413,7 @@ function ScheduledPostsPageContent() {
           description: warning ?? "Viral score and engagement insights are ready.",
         }),
       )
+      notifyMarketingCoreChanged()
     } catch (error) {
       setErrorMessage(
         error instanceof Error ? error.message : "Could not score post.",
@@ -433,6 +444,7 @@ function ScheduledPostsPageContent() {
         ),
       )
       setToast(successToast("postApproved"))
+      notifyMarketingCoreChanged()
       clearPostBusy()
       return
     }
@@ -461,6 +473,7 @@ function ScheduledPostsPageContent() {
         current.map((item) => (item.id === post.id ? payload.data! : item)),
       )
       setToast(successToast("postApproved"))
+      notifyMarketingCoreChanged()
     } catch (error) {
       setErrorMessage(
         error instanceof Error ? error.message : "Could not approve post.",
@@ -508,6 +521,7 @@ function ScheduledPostsPageContent() {
           : current.filter((item) => item.id !== post.id),
       )
       setToast(successToast("postScheduled"))
+      notifyMarketingCoreChanged()
       clearPostBusy()
       return
     }
@@ -541,6 +555,7 @@ function ScheduledPostsPageContent() {
           : current.filter((item) => item.id !== post.id),
       )
       setToast(successToast("postScheduled"))
+      notifyMarketingCoreChanged()
     } catch (error) {
       setErrorMessage(
         error instanceof Error ? error.message : "Could not schedule post.",
@@ -573,6 +588,7 @@ function ScheduledPostsPageContent() {
           : current.filter((item) => item.id !== post.id),
       )
       setToast(successToast("postPublished"))
+      notifyMarketingCoreChanged()
       clearPostBusy()
       return
     }
@@ -586,6 +602,7 @@ function ScheduledPostsPageContent() {
           : current.filter((item) => item.id !== post.id),
       )
       setToast(successToast("postPublished"))
+      notifyMarketingCoreChanged()
     } catch (error) {
       setErrorMessage(
         error instanceof Error ? error.message : "Could not publish post.",
@@ -642,6 +659,7 @@ function ScheduledPostsPageContent() {
 
     if (demoMode) {
       setToast(successToast("analyticsSynced"))
+      notifyMarketingCoreChanged()
       clearPostBusy()
       return
     }
@@ -649,6 +667,7 @@ function ScheduledPostsPageContent() {
     try {
       await syncAnalytics(post.id)
       setToast(successToast("analyticsSynced"))
+      notifyMarketingCoreChanged()
     } catch (error) {
       setErrorMessage(
         error instanceof Error ? error.message : "Analytics sync failed.",
@@ -668,6 +687,7 @@ function ScheduledPostsPageContent() {
 
     if (demoMode) {
       setToast(successToast("instagramPublished"))
+      notifyMarketingCoreChanged()
       clearPostBusy()
       return
     }
@@ -710,6 +730,7 @@ function ScheduledPostsPageContent() {
       }
 
       setToast(successToast("instagramPublished"))
+      notifyMarketingCoreChanged()
       await loadPosts()
     } catch (error) {
       setErrorMessage(

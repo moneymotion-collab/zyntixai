@@ -18,6 +18,7 @@ import {
   type MarketingOptimizeResult,
   type MarketingOptimizeSourceTable,
 } from "@/lib/marketing/marketing-optimize-client"
+import { notifyMarketingCoreChanged } from "@/lib/marketing/notify"
 import { optimizeSocialPostDemo } from "@/lib/marketing/optimize-social-post"
 import { scorePostContent } from "@/lib/marketing/score-post-content"
 
@@ -176,6 +177,9 @@ export default function PostOptimizationFlow({
 
       onApplied?.(applied)
       setResult(null)
+      if (!demoMode) {
+        notifyMarketingCoreChanged()
+      }
     } catch (error) {
       const message =
         error instanceof Error ? error.message : "Could not apply optimized version."
