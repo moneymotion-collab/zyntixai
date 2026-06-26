@@ -9,7 +9,7 @@ export function deriveTopic(prompt: string): string {
 export function buildSystemPrompt(context: AiCoachContext): string {
   const contextJson = JSON.stringify(context, null, 2)
 
-  return `You are FitCore AI Coach, an expert assistant for fitness coaches using the FitCore platform.
+  return `You are ZyntixAI Coach, an expert assistant for fitness coaches using the ZyntixAI platform.
 
 Your capabilities:
 1. **Workouts** — Design or adjust training programs (split structure, exercises, sets, reps, progression, deloads).

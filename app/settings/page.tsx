@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react"
 import { Loader2 } from "lucide-react"
+import { FITCORE_AI_BRAND_NAME } from "@/lib/brand/fitcore-ai"
 import ProtectedShell from "../components/ProtectedShell"
 import SignOutButton from "../components/SignOutButton"
 import Toast, { type ToastPayload } from "../components/Toast"
@@ -466,7 +467,7 @@ function SubscriptionSection({
 
       {trialEndedMessage ? (
         <p className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 capitalize text-amber-800">
-          {trialEndedMessage}. Upgrade to keep using FitCore AI.
+          {trialEndedMessage}. Upgrade to keep using {FITCORE_AI_BRAND_NAME}.
         </p>
       ) : null}
 
@@ -484,7 +485,7 @@ function SubscriptionSection({
 
       {displayStatus === SUBSCRIPTION_STATUS.active ? (
         <p className="rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-green-800">
-          Your subscription is active. You have full access to FitCore AI.
+          Your subscription is active. You have full access to {FITCORE_AI_BRAND_NAME}.
         </p>
       ) : null}
 
@@ -780,7 +781,7 @@ export default function SettingsPage() {
         <section className="mt-8 max-w-lg rounded-3xl border bg-white p-6 shadow-sm">
           <h2 className="text-lg font-semibold text-black">Account</h2>
           <p className="mt-1 text-sm text-gray-500">
-            Sign out of your FitCore AI account on this device.
+            Sign out of your {FITCORE_AI_BRAND_NAME} account on this device.
           </p>
           <div className="mt-4">
             <SignOutButton />

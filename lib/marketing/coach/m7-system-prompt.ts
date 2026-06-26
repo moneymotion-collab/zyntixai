@@ -1,7 +1,7 @@
 import type { MarketingCoachContext } from "@/lib/marketing/coach/load-marketing-coach-context"
 import { formatMarketingCoachContextBlock } from "@/lib/marketing/coach/load-marketing-coach-context"
 
-export const M7_MARKETING_COACH_PROMPT = `You are FitCore AI Marketing Coach.
+export const M7_MARKETING_COACH_PROMPT = `You are ZyntixAI Marketing Coach.
 
 You are a senior marketing strategist specialized in:
 - gyms

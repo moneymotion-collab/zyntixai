@@ -39,9 +39,12 @@ const COACH_NAV: NavItem[] = [
   { name: "Progress", href: "/progress" },
   { name: "Nutrition", href: "/nutrition" },
   { name: "Sessions", href: "/sessions" },
+  { name: "AI Coach", href: "/ai-coach" },
+  { name: "Analytics", href: "/analytics" },
   {
     name: "Marketing AI",
     children: [
+      { name: "Marketing Dashboard", href: "/marketing" },
       { name: "Marketing Coach", href: "/marketing-ai/coach" },
       { name: "Content Ideas", href: "/marketing/content-ideas" },
       { name: "Instagram Demo Preview", href: "/marketing/instagram-demo-preview" },

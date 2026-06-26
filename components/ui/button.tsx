@@ -24,8 +24,8 @@ const variantClasses: Record<ButtonVariant, string> = {
 }
 
 const sizeClasses: Record<ButtonSize, string> = {
-  default: "",
-  sm: "px-3 py-1.5 text-xs",
+  default: "min-h-11",
+  sm: "min-h-9 px-3 py-1.5 text-xs",
 }
 
 export default function Button({
@@ -50,7 +50,7 @@ export default function Button({
       type={type}
       disabled={isDisabled}
       aria-busy={loading || undefined}
-      className={`${variantClasses[variant]} ${sizeClasses[size]} ${className}`.trim()}
+      className={`${variantClasses[variant]} saas-focus-ring ${sizeClasses[size]} ${className}`.trim()}
       {...props}
     >
       {loading ? <ButtonSpinner /> : null}

@@ -14,7 +14,7 @@ export const CTA_CATEGORY_META: Record<CtaCategory, CtaCategoryMeta> = {
   },
   "Early Access": {
     description: "Create exclusivity — beta, waitlist, or founding member access.",
-    examples: ["Join The FitCore AI Beta"],
+    examples: ["Join The ZyntixAI Beta"],
     pattern: "Join / Get early access + product name + exclusivity",
   },
   "Platform Value": {

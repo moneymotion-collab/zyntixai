@@ -207,7 +207,7 @@ export function buildWorkflowIntelligenceUserPrompt(input: {
   )
 
   return `
-Brand: ${input.brandName ?? "FitCore AI"}
+Brand: ${input.brandName ?? "ZyntixAI"}
 Platform: ${input.platform ?? "instagram"}
 Target audience: ${input.targetAudience ?? "Fitness coaches and gym owners"}
 Business goal: ${input.explicitGoal ?? input.goal.inferredObjective}

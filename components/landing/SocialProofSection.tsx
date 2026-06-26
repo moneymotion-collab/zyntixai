@@ -48,7 +48,7 @@ export default function SocialProofSection() {
             <span className="text-gradient">Want One Platform</span>
           </h2>
           <p className={landingSubheadingClass}>
-            FitCore AI is in active beta. No fabricated reviews — just honest
+            ZyntixAI is in active beta. No fabricated reviews — just honest
             product proof and a platform designed around real coaching workflows.
           </p>
         </motion.div>

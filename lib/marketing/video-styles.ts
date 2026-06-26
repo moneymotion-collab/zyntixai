@@ -51,7 +51,7 @@ export const VIDEO_STYLE_DESCRIPTIONS: Record<VideoStyle, string> = {
   saas_demo:
     "Product demo flow with dashboard UI callouts, screen push-ins, and workflow framing",
   app_showcase:
-    "Full FitCore Coach SaaS demo — 7-scene module walkthrough: Dashboard, Members, Workouts, Nutrition, Sessions, Marketing AI, Analytics",
+    "Full Zyntix Coach SaaS demo — 7-scene module walkthrough: Dashboard, Members, Workouts, Nutrition, Sessions, Marketing AI, Analytics",
   mascot_story:
     "Character-driven story beats with brand mascot voice and tracking camera work",
 }
@@ -146,7 +146,7 @@ Selection guide:
 - problem_solution → pain point, frustration, objection, or before/after outcome
 - premium_ad → luxury, trust, aspiration, cinematic brand ad
 - saas_demo → software demo, dashboard, automation, coach business tool, ROI
-- app_showcase → FitCore Coach SaaS demo, platform features, coach business ROI, B2B marketing
+- app_showcase → Zyntix Coach SaaS demo, platform features, coach business ROI, B2B marketing
 - mascot_story → character-led story with the brand mascot as guide
 
 Write the chosen style slug into the JSON "style" field.`

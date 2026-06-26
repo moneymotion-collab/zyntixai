@@ -50,7 +50,7 @@ export default async function InstagramDemoPreviewPage() {
               </h1>
               <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-400 sm:text-base">
                 Show coaches exactly what their Instagram could look like with
-                FitCore AI — premium profile, transformation content, and
+                ZyntixAI — premium profile, transformation content, and
                 AI-powered performance on every post.
               </p>
             </div>

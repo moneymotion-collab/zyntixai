@@ -2,6 +2,7 @@ import { COACH_TRIAL_DAYS } from "@/lib/coach-trial"
 import {
   FITCORE_AI_BRAND_NAME,
   FITCORE_AI_METADATA_DESCRIPTION,
+  ZYNTIX_AI_LOGO_SRC,
 } from "@/lib/brand/fitcore-ai"
 import { BILLING_PLAN_DETAILS, BILLING_PLANS } from "@/lib/stripe-config"
 import { absoluteSiteUrl, getSiteBaseUrl } from "@/lib/seo/site-metadata"
@@ -16,7 +17,12 @@ export function buildLandingSoftwareApplicationJsonLd(): Record<string, unknown>
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
     description: FITCORE_AI_METADATA_DESCRIPTION,
-    ...(siteUrl ? { url: siteUrl } : {}),
+    ...(siteUrl
+      ? {
+          url: siteUrl,
+          image: absoluteSiteUrl(ZYNTIX_AI_LOGO_SRC) ?? ZYNTIX_AI_LOGO_SRC,
+        }
+      : {}),
     audience: {
       "@type": "PeopleAudience",
       audienceType: "Personal trainers, online coaches, and gyms",

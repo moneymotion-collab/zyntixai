@@ -1,11 +1,14 @@
 import type { Metadata } from "next"
-import { FITCORE_AI_BRAND_NAME } from "@/lib/brand/fitcore-ai"
+import {
+  FITCORE_AI_BRAND_NAME,
+  ZYNTIX_AI_OG_IMAGE_SRC,
+} from "@/lib/brand/fitcore-ai"
 
 export const SITE_OG_IMAGE = {
-  url: "/app-showcase/dashboard.png",
+  url: ZYNTIX_AI_OG_IMAGE_SRC,
   width: 1200,
   height: 630,
-  alt: `${FITCORE_AI_BRAND_NAME} — coach dashboard`,
+  alt: `${FITCORE_AI_BRAND_NAME} — AI Business Operating System`,
 } as const
 
 /** Public marketing and legal routes included in sitemap.xml. */
@@ -161,8 +164,8 @@ export function buildPageMetadata(input: BuildPageMetadataInput): Metadata {
 export const HOME_SEO = {
   title: "Start Your 7-Day Free Trial",
   description:
-    "FitCore AI is an all-in-one coaching platform for personal trainers, online coaches, and gyms — workout programming, progress tracking, Marketing AI, and Instagram publishing. No credit card required.",
-  openGraphTitle: "FitCore AI — Coaching Platform for Trainers & Online Coaches",
+    "ZyntixAI is an all-in-one coaching platform for personal trainers, online coaches, and gyms — workout programming, progress tracking, Marketing AI, and Instagram publishing. No credit card required.",
+  openGraphTitle: "ZyntixAI — Coaching Platform for Trainers & Online Coaches",
   openGraphDescription:
     "Manage clients, build workouts, track progress, and grow with Marketing AI and Instagram publishing. Start your 7-day free trial.",
 } as const
@@ -170,31 +173,31 @@ export const HOME_SEO = {
 export const PRICING_SEO = {
   title: "Pricing",
   description:
-    "FitCore AI plans from €29/month — workout programming, progress tracking, Marketing AI, and Instagram publishing. Starter, Pro, and Agency plans with a 7-day free trial.",
-  openGraphTitle: "FitCore AI Pricing — Plans for Growing Coaches",
+    "ZyntixAI plans from €29/month — workout programming, progress tracking, Marketing AI, and Instagram publishing. Starter, Pro, and Agency plans with a 7-day free trial.",
+  openGraphTitle: "ZyntixAI Pricing — Plans for Growing Coaches",
 } as const
 
 export const PRIVACY_SEO = {
   title: "Privacy Policy",
   description:
-    "How FitCore AI collects, uses, and protects your data — cookies, analytics, account information, and your GDPR rights.",
+    "How ZyntixAI collects, uses, and protects your data — cookies, analytics, account information, and your GDPR rights.",
 } as const
 
 export const TERMS_SEO = {
   title: "Terms of Service",
   description:
-    "FitCore AI terms — acceptable use, subscriptions, billing, 7-day free trial, cancellation, and limitation of liability.",
+    "ZyntixAI terms — acceptable use, subscriptions, billing, 7-day free trial, cancellation, and limitation of liability.",
 } as const
 
 export const ABOUT_SEO = {
   title: "About",
   description:
-    "FitCore AI helps personal trainers, online coaches, and gyms run client delivery, workout programming, progress tracking, and marketing from one platform.",
-  openGraphTitle: "About FitCore AI — Built for Modern Coaches",
+    "ZyntixAI helps personal trainers, online coaches, and gyms run client delivery, workout programming, progress tracking, and marketing from one platform.",
+  openGraphTitle: "About ZyntixAI — Built for Modern Coaches",
 } as const
 
 export const CONTACT_SEO = {
   title: "Contact",
   description:
-    "Contact FitCore AI for support, beta access, and product questions. We typically respond within 1–2 business days.",
+    "Contact ZyntixAI for support, beta access, and product questions. We typically respond within 1–2 business days.",
 } as const

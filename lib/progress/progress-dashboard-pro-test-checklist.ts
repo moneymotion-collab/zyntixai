@@ -69,7 +69,7 @@ export const PROGRESS_DASHBOARD_PRO_TEST_CHECKLIST: ProgressDashboardProTestChec
     {
       id: "pdf-export",
       label: "PDF export works",
-      hint: "Export report and open the downloaded FitCore PDF.",
+      hint: "Export report and open the downloaded ZyntixAI PDF.",
     },
     {
       id: "loading-states",

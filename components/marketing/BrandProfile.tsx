@@ -64,7 +64,7 @@ const MASCOT_FIELDS: {
   {
     key: "mascot_name",
     label: "Mascot name",
-    placeholder: "e.g. FitCore AI",
+    placeholder: "e.g. ZyntixAI",
   },
   {
     key: "mascot_description",

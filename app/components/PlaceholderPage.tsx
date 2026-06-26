@@ -1,4 +1,5 @@
-﻿import ProtectedShell from "./ProtectedShell"
+﻿import { ZyntixLogoFull } from "@/components/brand/FitCoreLogo"
+import ProtectedShell from "./ProtectedShell"
 
 export default function PlaceholderPage({
   title,
@@ -11,9 +12,7 @@ export default function PlaceholderPage({
     <ProtectedShell>
       <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
         <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
-          <p className="mb-3 text-sm font-medium uppercase tracking-[0.3em] text-cyan-400">
-            FitCore AI
-          </p>
+          <ZyntixLogoFull size="sm" className="mb-6" />
           <h1 className="text-5xl font-bold">{title}</h1>
           <p className="mt-3 max-w-2xl text-gray-400">{description}</p>
         </div>

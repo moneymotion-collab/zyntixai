@@ -94,7 +94,7 @@ function ResetDemoWorkspaceModalBody({
               Restore full demo environment?
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-slate-400">
-              This clears your current demo data and loads a fresh FitCore
+              This clears your current demo data and loads a fresh ZyntixAI
               Performance Coaching showcase.
             </p>
           </div>

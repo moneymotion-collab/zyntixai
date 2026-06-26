@@ -226,9 +226,9 @@ export const WORKFLOW_PURPOSES: Record<WorkflowType, string> = {
   nutrition_plan_workflow:
     "Show how a coach creates and assigns a nutrition plan.",
   social_media_manager_workflow:
-    "FitCore AI launch campaign: a coach creates, plans, publishes, and improves social media content with populated full-screen UI.",
+    "ZyntixAI launch campaign: a coach creates, plans, publishes, and improves social media content with populated full-screen UI.",
   full_platform_overview:
-    "Show FitCore as an all-in-one coaching business platform.",
+    "Show ZyntixAI as an all-in-one coaching business platform.",
 }
 
 export function toWorkflowType(workflowId: AppWorkflowId): WorkflowType {

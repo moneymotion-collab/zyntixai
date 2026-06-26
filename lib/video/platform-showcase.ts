@@ -7,7 +7,7 @@ import {
   type SceneModuleId,
 } from "@/lib/video/resolve-scene-module";
 
-/** Fixed 30-second full-platform SaaS showcase for FitCore AI. */
+/** Fixed 30-second full-platform SaaS showcase for ZyntixAI. */
 export const PLATFORM_SHOWCASE_TOTAL_SECONDS = 30;
 export const PLATFORM_SHOWCASE_CTA_SECONDS = 2.5;
 
@@ -48,7 +48,7 @@ export const PLATFORM_SHOWCASE_BEATS: PlatformShowcaseBeat[] = [
     duration: 3.5,
     text: "One platform for your entire fitness business",
     visual_description:
-      "FitCore AI unified dashboard showing members, workouts, nutrition, sessions, marketing and analytics modules",
+      "ZyntixAI unified dashboard showing members, workouts, nutrition, sessions, marketing and analytics modules",
     variant: "platform_overview",
     asset_url: "/app-showcase/dashboard.png",
   },
@@ -257,17 +257,17 @@ export function mergeScriptIntoShowcase(
 
 export const DEFAULT_PLATFORM_HOOK = PLATFORM_SHOWCASE_BEATS[0].text;
 
-export const DEFAULT_PLATFORM_CTA = "Replace every tool. Run FitCore AI →";
+export const DEFAULT_PLATFORM_CTA = "Replace every tool. Run ZyntixAI →";
 
 /** Default copy for the video generator UI and thin-script fallbacks. */
 export const FITCORE_PLATFORM_SHOWCASE_CAMPAIGN = {
-  brandName: "FitCore AI",
-  label: "FitCore AI — 30s Platform Showcase",
+  brandName: "ZyntixAI",
+  label: "ZyntixAI — 30s Platform Showcase",
   targetAudience:
     "Personal trainers, gym owners, and online fitness coaches",
   goal:
-    "Show that FitCore AI replaces multiple tools with one complete fitness business platform",
-  defaultPrompt: `30-second SaaS showcase for FitCore AI — a complete fitness business platform.
+    "Show that ZyntixAI replaces multiple tools with one complete fitness business platform",
+  defaultPrompt: `30-second SaaS showcase for ZyntixAI — a complete fitness business platform.
 
 Structure (30 seconds):
 1. Problem — coaches juggle 6+ disconnected apps
@@ -278,7 +278,7 @@ Structure (30 seconds):
 6. Progress — track every client milestone
 7. Marketing AI — AI content and scheduling (one section only)
 8. Analytics — revenue, retention, and growth
-9. CTA — replace every tool with FitCore AI
+9. CTA — replace every tool with ZyntixAI
 
 Include dashboard, members, workouts, nutrition, progress tracking, sessions, marketing AI, analytics, and AI coach across the platform UI. Dynamic transitions between modules.`,
 };

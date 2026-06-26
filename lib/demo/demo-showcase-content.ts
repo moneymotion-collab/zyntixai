@@ -22,7 +22,7 @@ export type DemoShowcaseMarketingExample = {
 }
 
 export const DEMO_SHOWCASE_VIDEO = {
-  title: "FitCore AI Platform Tour",
+  title: "ZyntixAI Platform Tour",
   duration: "30 sec",
   description:
     "Full walkthrough — members, workouts, nutrition, progress, marketing AI, and analytics.",
@@ -53,7 +53,7 @@ export const DEMO_SHOWCASE_CAMPAIGNS: DemoShowcaseCampaign[] = [
   {
     id: "platform-showcase",
     title: "Platform Showcase Reel",
-    description: "30-second SaaS product video highlighting every FitCore AI module.",
+    description: "30-second SaaS product video highlighting every ZyntixAI module.",
     platform: "Instagram Reels",
     status: "Generated",
     href: "/marketing/video-generator",

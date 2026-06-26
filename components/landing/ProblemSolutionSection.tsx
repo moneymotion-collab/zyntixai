@@ -189,7 +189,7 @@ export default function ProblemSolutionSection() {
                       The Solution
                     </p>
                     <h3 className="text-lg font-semibold text-white sm:text-xl">
-                      FitCore AI
+                      ZyntixAI
                     </h3>
                   </div>
                 </div>
@@ -239,7 +239,7 @@ export default function ProblemSolutionSection() {
                   <ArrowRight className="h-4 w-4 shrink-0 text-indigo-400" />
                   <span className="badge-premium shrink-0">
                     <Sparkles className="h-3 w-3" />
-                    FitCore AI
+                    ZyntixAI
                   </span>
                 </div>
               </div>

@@ -228,7 +228,7 @@ export default function MarketingAIShowcase() {
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-slate-400 sm:text-lg">
             A complete content pipeline — generate, create, schedule, publish,
-            and analyze without leaving FitCore AI.
+            and analyze without leaving ZyntixAI.
           </p>
         </motion.div>
 

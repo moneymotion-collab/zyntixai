@@ -149,7 +149,7 @@ export function ShowcaseScenePreview({
   const layer = deriveSceneVisualLayer(scene, index);
   const layout = layer.layout_style;
   const background = getLayoutBackgroundGradient(layout, index);
-  const browserUrl = `app.fitcorecoach.com/${scene.asset_key ?? scene.workflow_step ?? "dashboard"}`;
+  const browserUrl = `app.zyntixai.com/${scene.asset_key ?? scene.workflow_step ?? "dashboard"}`;
   const isCompact = variant === "compact";
   const aspectClass = isCompact ? "aspect-[4/3]" : "aspect-[16/10]";
   const showHighlight = Boolean(

@@ -1,6 +1,7 @@
 ﻿"use client"
 
 import { useCallback, useEffect, useMemo, useState } from "react"
+import { useSearchParams } from "next/navigation"
 import { useForm } from "react-hook-form"
 import {
   Beef,
@@ -110,6 +111,7 @@ function FormField({
 }
 
 export default function NutritionPage() {
+  const searchParams = useSearchParams()
   const supabase = createClient()
   const [plans, setPlans] = useState<NutritionPlan[]>([])
   const [members, setMembers] = useState<Member[]>([])
@@ -230,6 +232,20 @@ export default function NutritionPage() {
     fetchMembers()
     fetchAssignments()
   }, [fetchAssignments, fetchMembers, fetchPlans])
+
+  const memberParam = searchParams.get("member")
+
+  useEffect(() => {
+    if (!memberParam || members.length === 0) return
+    if (!members.some((member) => member.id === memberParam)) return
+    setSelectedMember(memberParam)
+    window.requestAnimationFrame(() => {
+      document.getElementById("nutrition-form")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      })
+    })
+  }, [memberParam, members])
 
   useCoachingCoreChanged(() => {
     void fetchPlans()

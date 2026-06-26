@@ -168,7 +168,7 @@ Based on your question: "${prompt.trim().slice(0, 120)}"`
 function buildGeneralMock(prompt: string, member: string): string {
   return `[Development mode — sample response, no OpenAI cost]
 
-Hi! I'm the AI Coach in development mode. Ask about **workouts**, **nutrition**, or **progress** for ${member} to get a full sample plan you can save in FitCore.
+Hi! I'm the AI Coach in development mode. Ask about **workouts**, **nutrition**, or **progress** for ${member} to get a full sample plan you can save in ZyntixAI.
 
 Your question was: "${prompt.trim().slice(0, 200)}"
 

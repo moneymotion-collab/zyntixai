@@ -1,6 +1,7 @@
 import Link from "next/link"
 import FitCoreLogo from "@/components/brand/FitCoreLogo"
 import { FITCORE_AI_TAGLINE } from "@/lib/brand/fitcore-ai"
+import { SITE_CONTACT } from "@/lib/landing/site-contact"
 import {
   LANDING_FOOTER_CTA,
   LANDING_SECONDARY_CTA,
@@ -35,13 +36,13 @@ const COMPANY_LINKS = [
 
 const CONTACT_LINKS = [
   {
-    label: "hello@fitcore.app",
-    href: "mailto:hello@fitcore.app",
+    label: SITE_CONTACT.helloEmail,
+    href: `mailto:${SITE_CONTACT.helloEmail}`,
     external: true,
   },
   {
     label: "Support",
-    href: "mailto:support@fitcore.app",
+    href: `mailto:${SITE_CONTACT.supportEmail}`,
     external: true,
   },
   { label: "Sign In", href: "/login" },
@@ -99,10 +100,8 @@ export default function LandingFooter() {
           <div className="lg:col-span-4">
             <FitCoreLogo
               size="md"
-              showWordmark
-              subtitle="Coaching Platform"
+              variant="full"
               href="/"
-              wordmarkClassName="text-lg"
             />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-slate-500">
               {FITCORE_AI_TAGLINE}
@@ -126,7 +125,7 @@ export default function LandingFooter() {
 
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/6 pt-8 sm:flex-row">
           <p className="text-xs text-slate-600">
-            © {year} FitCore AI. All rights reserved.
+            © {year} ZyntixAI. All rights reserved.
           </p>
           <p className="text-xs text-slate-600">
             Built for modern coaches worldwide.

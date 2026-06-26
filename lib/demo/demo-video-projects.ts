@@ -12,7 +12,7 @@ alter table video_projects add column if not exists is_demo boolean default fals
 alter table video_scenes add column if not exists is_demo boolean default false;
 `.trim()
 
-const DEMO_BRAND_NAME = "FitCore Performance Coaching"
+const DEMO_BRAND_NAME = "ZyntixAI Performance Coaching"
 
 type DemoVideoStatus = "draft" | "processing" | "ready" | "published"
 
@@ -175,7 +175,7 @@ export const DEMO_VIDEO_PROJECT_SEEDS: DemoVideoProjectSeed[] = [
     platform: "youtube",
     status: "ready",
     hook: "Let AI handle the busywork so you can coach.",
-    cta: "Try FitCore AI free.",
+    cta: "Try ZyntixAI free.",
     style: "app_showcase",
     music_mood: "uplifting",
     sceneCount: 6,
@@ -183,13 +183,13 @@ export const DEMO_VIDEO_PROJECT_SEEDS: DemoVideoProjectSeed[] = [
     workflow_summary: "Coach time problem, AI workflow demo, member management, analytics, trial CTA.",
   },
   {
-    title: "FitCore AI Launch Video",
+    title: "ZyntixAI Launch Video",
     prompt:
-      "Flagship launch video for FitCore AI — the all-in-one platform for coaches, gyms, and online trainers.",
+      "Flagship launch video for ZyntixAI — the all-in-one platform for coaches, gyms, and online trainers.",
     platform: "instagram",
     status: "published",
     hook: "Run your entire coaching business in one platform.",
-    cta: "Launch with FitCore AI today.",
+    cta: "Launch with ZyntixAI today.",
     style: "app_showcase",
     music_mood: "cinematic",
     sceneCount: 7,
@@ -234,7 +234,7 @@ function renderFieldsForStatus(status: DemoVideoStatus): {
       return {
         render_status: "completed",
         final_render_status: "completed",
-        video_url: "https://demo.fitcore.ai/videos/published-preview.mp4",
+        video_url: "https://demo.zyntixai.com/videos/published-preview.mp4",
       }
   }
 }
@@ -271,7 +271,7 @@ function buildSceneVisual(
   const visuals: Record<DemoScenePurpose, string> = {
     Hook: `Bold kinetic headline over ${project.platform} vertical frame with coach in premium gym lighting`,
     Problem: "Split-screen of overwhelmed coach vs scattered spreadsheets, notes, and DMs",
-    Solution: `FitCore dashboard presenting ${project.title} workflow with electric blue UI accents`,
+    Solution: `ZyntixAI dashboard presenting ${project.title} workflow with electric blue UI accents`,
     Features: "Animated SaaS product demo with cursor highlights on member progress and program builder",
     CTA: "Full-screen CTA card with brand logo, offer text, and tap-to-book button animation",
   }
@@ -340,7 +340,7 @@ function buildProjectRow(
     thumbnail_text: project.hook,
     thumbnail_visual: `${project.title} — premium fitness marketing video`,
     caption: `${project.hook} ${project.cta}`,
-    hashtags: ["#fitnesscoach", "#onlinecoach", "#gymowner", "#fitcoreai"],
+    hashtags: ["#fitnesscoach", "#onlinecoach", "#gymowner", "#zyntixai"],
     voiceover_status: project.status === "draft" ? "pending" : "ready",
     image_generation_status:
       project.status === "draft" ? "pending" : "completed",

@@ -137,7 +137,7 @@ function resolveOverlayText(
   }
 
   if (uiFocusArea) return shortenHeadline(uiFocusArea)
-  return "See FitCore AI in action"
+  return "See ZyntixAI in action"
 }
 
 function resolveCropFocus(

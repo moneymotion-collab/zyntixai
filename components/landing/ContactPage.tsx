@@ -17,7 +17,7 @@ export default function ContactPage() {
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
-    const subject = encodeURIComponent(`FitCore AI contact — ${name.trim() || "Enquiry"}`)
+    const subject = encodeURIComponent(`ZyntixAI contact — ${name.trim() || "Enquiry"}`)
     const body = encodeURIComponent(
       `Name: ${name.trim()}\nEmail: ${email.trim()}\n\n${message.trim()}`,
     )
@@ -29,7 +29,7 @@ export default function ContactPage() {
     <MarketingPageShell
       badge="Support"
       title="Contact Us"
-      description="Questions about FitCore AI, your account, or beta access? We're here to help."
+      description="Questions about ZyntixAI, your account, or beta access? We're here to help."
       narrow
     >
       <div className="grid gap-6 lg:grid-cols-5 lg:gap-8">

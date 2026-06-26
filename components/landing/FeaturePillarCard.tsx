@@ -95,7 +95,7 @@ export default function FeaturePillarCard({
                   <span className="h-2 w-2 rounded-full bg-emerald-500/80 sm:h-2.5 sm:w-2.5" />
                 </div>
                 <span className="mx-auto truncate text-[10px] text-slate-500 sm:text-[11px]">
-                  app.fitcore.ai/{pillar.id}
+                  app.zyntixai.com/{pillar.id}
                 </span>
               </div>
               <div className="relative aspect-[16/10] w-full bg-[#0a0e17]">

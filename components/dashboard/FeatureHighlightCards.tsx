@@ -11,15 +11,15 @@ import { FEATURE_HIGHLIGHTS } from "@/lib/copy/feature-highlights"
 
 export default function FeatureHighlightCards() {
   return (
-    <section aria-label="Why coaches use FitCore AI" className="mb-0">
+    <section aria-label="Why coaches use ZyntixAI" className="mb-0">
       <DashboardSectionHeader
         eyebrow="Platform highlights"
-        title="Why coaches use FitCore AI"
+        title="Why coaches use ZyntixAI"
         description="Everything you need to coach clients, grow your brand, and run a modern fitness business — in one premium workspace."
         badge={
           <span className="badge-premium">
             <Sparkles className="h-3 w-3 text-cyan-300" aria-hidden />
-            FitCore AI
+            ZyntixAI
           </span>
         }
       />

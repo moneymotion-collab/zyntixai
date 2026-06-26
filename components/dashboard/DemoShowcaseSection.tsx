@@ -53,7 +53,7 @@ function VideoPlaceholder() {
 
       <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between border-t border-white/10 bg-black/30 px-4 py-3 backdrop-blur-md">
         <span className="text-xs font-medium text-slate-400">
-          Watch FitCore AI in Action
+          Watch ZyntixAI in Action
         </span>
         <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-300 transition group-hover:text-cyan-200">
           Open video generator
@@ -156,7 +156,7 @@ export default function DemoShowcaseSection() {
         <div className="relative">
           <DashboardSectionHeader
             eyebrow="Platform preview"
-            title="Watch FitCore AI in Action"
+            title="Watch ZyntixAI in Action"
             description="Explore sample campaigns and marketing content from a fully loaded coaching workspace."
           />
 

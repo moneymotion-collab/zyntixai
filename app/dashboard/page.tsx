@@ -23,6 +23,7 @@ import { useWorkspaceMode } from "../hooks/useWorkspaceMode"
 import { growthPercent } from "@/lib/coach-dashboard/compute-business-overview"
 import { SAAS_PAGE_MAIN } from "@/lib/ui/saas-page-layout"
 import { MOBILE_PAGE_ROOT } from "@/lib/ui/mobile-layout"
+import ErrorStateBanner from "@/components/ui/error-state-banner"
 import { createClient } from "@/lib/supabase/client"
 
 export default function DashboardPage() {
@@ -87,7 +88,12 @@ export default function DashboardPage() {
               ) : null}
             </div>
             {coachError ? (
-              <ErrorBanner message={coachError} onRetry={() => refetchCoach()} />
+              <ErrorStateBanner
+                title="Could not load dashboard"
+                message={coachError}
+                onRetry={() => refetchCoach()}
+                embedded
+              />
             ) : null}
             {coachOverview ? (
               <CoachDashboardOverview
@@ -120,24 +126,6 @@ export default function DashboardPage() {
   )
 }
 
-function ErrorBanner({
-  message,
-  onRetry,
-}: {
-  message: string
-  onRetry: () => void
-}) {
-  return (
-    <div className="glass-panel mb-6 border-red-400/30 bg-red-500/[0.06] p-5">
-      <p className="font-medium text-red-200">Could not load dashboard</p>
-      <p className="mt-1 text-sm text-red-300/90">{message}</p>
-      <button type="button" onClick={onRetry} className="btn-gradient mt-4">
-        Try again
-      </button>
-    </div>
-  )
-}
-
 function MemberDashboard({
   role,
   stats,
@@ -155,7 +143,7 @@ function MemberDashboard({
 }) {
   return (
     <div className="space-y-12">
-      <header className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-cyan-500/[0.07] via-white/[0.03] to-indigo-500/[0.08] p-6 sm:p-8">
+      <header className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-cyan-500/[0.07] via-white/[0.03] to-indigo-500/[0.08] p-6 sm:p-8">
         <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-cyan-500/10 blur-3xl" />
         <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-cyan-400/90">
           Member Portal
@@ -169,7 +157,12 @@ function MemberDashboard({
       </header>
 
       {error ? (
-        <ErrorBanner message={error} onRetry={refetch} />
+        <ErrorStateBanner
+          title="Could not load dashboard"
+          message={error}
+          onRetry={refetch}
+          embedded
+        />
       ) : null}
 
       {role === "admin" && (

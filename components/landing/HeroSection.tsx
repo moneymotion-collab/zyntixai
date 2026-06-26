@@ -19,6 +19,7 @@ import {
   LANDING_SECONDARY_CTA,
   LANDING_TERTIARY_CTA,
 } from "@/components/landing/landing-cta"
+import { ZyntixLogoFull } from "@/components/brand/FitCoreLogo"
 import {
   landingContainerClass,
   landingCtaPrimaryClass,
@@ -66,6 +67,16 @@ export default function HeroSection() {
         <div className="mx-auto max-w-4xl text-center">
           <motion.div
             custom={0}
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            className="mb-8 flex justify-center"
+          >
+            <ZyntixLogoFull size="xl" className="mx-auto" priority />
+          </motion.div>
+
+          <motion.div
+            custom={1}
             initial="hidden"
             animate="visible"
             variants={fadeUp}
@@ -185,7 +196,7 @@ export default function HeroSection() {
                 <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/80" />
               </div>
               <div className="mx-auto flex h-7 w-full max-w-xs items-center justify-center rounded-lg bg-white/[0.04] px-3 text-[11px] text-slate-500 sm:max-w-sm">
-                app.fitcore.ai/dashboard
+                app.zyntixai.com/dashboard
               </div>
             </div>
 

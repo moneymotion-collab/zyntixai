@@ -21,7 +21,7 @@ import { normalizeGeneratorVideoStyle } from "@/lib/marketing/video-styles"
 const PLACEHOLDER_IMAGE =
   "data:image/svg+xml," +
   encodeURIComponent(
-    `<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#050505"/><stop offset="100%" stop-color="#0a1628"/></linearGradient></defs><rect width="1080" height="1920" fill="url(#g)"/><circle cx="540" cy="760" r="180" fill="none" stroke="#00d4ff" stroke-width="4" opacity="0.6"/><text x="540" y="980" fill="#ffffff" font-family="Arial,sans-serif" font-size="42" font-weight="700" text-anchor="middle">FitCore Coach</text></svg>`,
+    `<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#050505"/><stop offset="100%" stop-color="#0a1628"/></linearGradient></defs><rect width="1080" height="1920" fill="url(#g)"/><circle cx="540" cy="760" r="180" fill="none" stroke="#00d4ff" stroke-width="4" opacity="0.6"/><text x="540" y="980" fill="#ffffff" font-family="Arial,sans-serif" font-size="42" font-weight="700" text-anchor="middle">Zyntix Coach</text></svg>`,
   )
 
 type GenerateSceneImagesInput = {

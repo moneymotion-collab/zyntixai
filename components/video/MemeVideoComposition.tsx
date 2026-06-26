@@ -207,7 +207,7 @@ function TextScene({
   isCta?: boolean;
 }) {
   const frame = useCurrentFrame();
-  const displayText = text.trim() || title || "FitCore AI";
+  const displayText = text.trim() || title || "ZyntixAI";
 
   const scale = interpolate(frame, [0, 12], [0.85, 1], {
     extrapolateRight: "clamp",
@@ -391,12 +391,12 @@ export default function MemeVideoComposition({
             });
 
       return {
-        hook: hook?.trim() || scenes[0]?.text || rawTitle || "FitCore AI",
+        hook: hook?.trim() || scenes[0]?.text || rawTitle || "ZyntixAI",
         cta:
           cta?.trim() ||
           scenes[scenes.length - 1]?.text ||
           "Create. Plan. Publish. Grow.",
-        title: rawTitle?.trim() || "FitCore AI",
+        title: rawTitle?.trim() || "ZyntixAI",
         scenes,
         usedFallback:
           usedFallbackProp ?? normalizedScenes.length === 0,
@@ -416,7 +416,7 @@ export default function MemeVideoComposition({
   }, [script, rawTitle, hook, cta, style, rawScenes, usedFallbackProp]);
 
   const usedFallback = usedFallbackProp ?? resolved.usedFallback;
-  const title = rawTitle?.trim() || resolved.title || "FitCore AI";
+  const title = rawTitle?.trim() || resolved.title || "ZyntixAI";
   const resolvedHook = resolved.hook || hook || title;
   const resolvedCta = resolved.cta || cta || "Create. Plan. Publish. Grow.";
   const bodyScenes = resolved.scenes;

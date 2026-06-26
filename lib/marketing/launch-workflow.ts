@@ -136,7 +136,7 @@ export const LAUNCH_SCENE_TEMPLATES: Record<LaunchSceneKey, LaunchSceneTemplate>
       screenName: "Dashboard",
       overlayText: LAUNCH_OVERLAY_BY_SCENE.dashboard,
       valueMessage:
-        "A coach opens FitCore AI and sees clients, schedule, and marketing priorities in one place.",
+        "A coach opens ZyntixAI and sees clients, schedule, and marketing priorities in one place.",
       cameraInstruction:
         "Full-screen dashboard with populated KPI cards and today's schedule. Hold wide, then slow zoom toward filled metric cards. All labels sharp and readable.",
       workflowStepId: "dashboard",
@@ -215,13 +215,13 @@ export const LAUNCH_SCENE_TEMPLATES: Record<LaunchSceneKey, LaunchSceneTemplate>
       overlayText: LAUNCH_OVERLAY_BY_SCENE.cta,
       taglineText: LAUNCH_CTA_TAGLINE,
       valueMessage:
-        "FitCore AI helps coaches grow their business while marketing runs on autopilot.",
+        "ZyntixAI helps coaches grow their business while marketing runs on autopilot.",
       cameraInstruction:
         "Full-screen branded CTA over soft populated dashboard backdrop. Minimal movement — hold on headline and launch tagline with subtle slow zoom out.",
       workflowStepId: "launch_cta",
       assetKey: "marketing-ai",
-      uiFocusArea: "FitCore AI logo, headline, and Launching Soon tagline",
-      cursorAction: "Hold on FitCore AI brand lockup with soft glow on CTA",
+      uiFocusArea: "ZyntixAI logo, headline, and Launching Soon tagline",
+      cursorAction: "Hold on ZyntixAI brand lockup with soft glow on CTA",
       storyBeat: "Launch CTA",
     },
   }

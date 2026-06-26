@@ -6,7 +6,7 @@ export default function MarketingSettingsPage() {
     <ProtectedShell allowed={["admin", "coach"]}>
       <MarketingBrandSettings
         title="Marketing Settings"
-        description="Tell FitCore AI about your gym so content ideas match your brand and goals."
+        description="Tell ZyntixAI about your gym so content ideas match your brand and goals."
         saveSuccessMessage="Marketing settings saved."
       />
     </ProtectedShell>

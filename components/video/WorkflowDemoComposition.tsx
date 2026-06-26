@@ -419,7 +419,7 @@ function SceneFrame({
     highlight: visualLayer.highlight,
   });
 
-  const chromeUrl = scene.asset_key ? `fitcore.app/${scene.asset_key}` : "fitcore.app";
+  const chromeUrl = scene.asset_key ? `zyntixai.com/${scene.asset_key}` : "zyntixai.com";
   const background = getLayoutBackgroundGradient(visualLayer.layout_style);
 
   const captionY =

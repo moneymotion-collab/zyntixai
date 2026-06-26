@@ -2,7 +2,7 @@
   "name": "fitai",
   "version": "1.0.0",
   "private": true,
-  "description": "FitCore AI — unified coaching platform",
+  "description": "ZyntixAI — AI business operating system",
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build",

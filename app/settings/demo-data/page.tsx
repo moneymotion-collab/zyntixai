@@ -8,6 +8,7 @@ import {
   Sparkles,
   Trash2,
 } from "lucide-react"
+import { FITCORE_AI_BRAND_NAME } from "@/lib/brand/fitcore-ai"
 import ProtectedShell from "@/app/components/ProtectedShell"
 import Toast from "@/app/components/Toast"
 import { useIsDemoWorkspace } from "@/app/hooks/useIsDemoWorkspace"
@@ -132,7 +133,7 @@ export default function DemoDataPage() {
     <ProtectedShell allowed={["admin", "coach"]}>
       <main className="premium-mesh flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
         <DashboardSectionHeader
-          eyebrow="FitCore AI"
+          eyebrow={FITCORE_AI_BRAND_NAME}
           title="Demo Data Manager"
           description="Load a realistic demo workspace for product demos, screenshots and launch videos."
         />

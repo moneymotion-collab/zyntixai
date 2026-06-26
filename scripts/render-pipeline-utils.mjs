@@ -213,14 +213,14 @@ const PLATFORM_SHOWCASE_SCENES = [
     text: "Coaches juggle 6+ apps to run their business",
     duration: 3.5,
     visual_description:
-      "Fragmented coaching tools vs one unified FitCore AI platform",
+      "Fragmented coaching tools vs one unified ZyntixAI platform",
   },
   {
     module: "platform_overview",
     text: "One platform for your entire fitness business",
     duration: 3.5,
     visual_description:
-      "FitCore AI dashboard with members, workouts, nutrition, sessions, marketing and analytics",
+      "ZyntixAI dashboard with members, workouts, nutrition, sessions, marketing and analytics",
     asset_url: "/app-showcase/dashboard.png",
   },
   {
@@ -390,7 +390,7 @@ export function buildFitCoreTemplateInputProps({
     (typeof script?.hook === "string" && script.hook.trim()) ||
     "";
   const resolvedCta =
-    videoCta.trim() || "Replace every tool. Run FitCore AI →";
+    videoCta.trim() || "Replace every tool. Run ZyntixAI →";
   const hook =
     explicitHook ||
     templateScenes.find((s) => s.module === "problem")?.text ||

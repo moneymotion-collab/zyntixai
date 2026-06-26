@@ -163,5 +163,5 @@ ${playbook}
 If you execute for 7 days: more qualified conversations, clearer positioning, and a repeatable content-to-lead loop — measurable via DMs, saves, and trial sign-ups.
 
 ---
-*Tip: Add OPENAI_API_KEY to .env.local for fully personalized FitCore AI coaching.*`
+*Tip: Add OPENAI_API_KEY to .env.local for fully personalized ZyntixAI coaching.*`
 }

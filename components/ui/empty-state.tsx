@@ -5,6 +5,7 @@ type EmptyStateProps = SaasEmptyCopy & {
   action?: ReactNode
   icon?: ReactNode
   variant?: "dark" | "light"
+  style?: "solid" | "dashed"
   compact?: boolean
 }
 
@@ -15,18 +16,24 @@ export default function EmptyState({
   action,
   icon,
   variant = "dark",
+  style = "solid",
   compact = false,
 }: EmptyStateProps) {
   const isDark = variant === "dark"
+  const isDashed = style === "dashed" && isDark
 
   return (
     <div
       className={
-        isDark
+        isDashed
+          ? `flex flex-col items-center rounded-2xl border border-dashed border-white/10 bg-gradient-to-b from-white/[0.03] to-transparent text-center transition-colors duration-200 hover:border-violet-400/20 hover:from-violet-500/[0.04] ${
+              compact ? "px-5 py-10 sm:px-8" : "px-6 py-12 sm:px-10 sm:py-16"
+            }`
+          : isDark
           ? `glass-panel flex flex-col items-center text-center ring-1 ring-white/[0.06] ${
               compact ? "px-5 py-10 sm:px-8" : "px-6 py-12 sm:px-10 sm:py-16"
             }`
-          : `flex flex-col items-center rounded-3xl border border-gray-200/90 bg-gradient-to-b from-white via-gray-50/80 to-white text-center shadow-[0_8px_40px_rgba(15,23,42,0.06)] ring-1 ring-gray-100 ${
+          : `flex flex-col items-center rounded-2xl border border-gray-200/90 bg-gradient-to-b from-white via-gray-50/80 to-white text-center shadow-[0_8px_40px_rgba(15,23,42,0.06)] ring-1 ring-gray-100 ${
               compact ? "px-5 py-10 sm:px-8" : "px-6 py-12 sm:px-10 sm:py-16"
             }`
       }

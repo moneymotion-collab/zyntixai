@@ -1,4 +1,4 @@
-﻿// Mock data for the FitCore AI gym CRM.
+// Mock data for the ZyntixAI gym CRM.
 // Replace these exports with live data from Supabase (see lib/supabase/*).
 
 export const dashboardStats = [

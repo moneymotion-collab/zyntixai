@@ -1,7 +1,7 @@
 import type { InstagramDemoPreviewData } from "@/lib/marketing/instagram-demo-preview-types"
 
-export const INSTAGRAM_SHOWCASE_USERNAME = "fitcore_coach_demo"
-export const INSTAGRAM_SHOWCASE_DISPLAY_NAME = "FitCore Coach Demo"
+export const INSTAGRAM_SHOWCASE_USERNAME = "zyntix_coach_demo"
+export const INSTAGRAM_SHOWCASE_DISPLAY_NAME = "Zyntix Coach Demo"
 export const INSTAGRAM_SHOWCASE_BIO =
   "Elite online coaching for trainers & transformation clients 💪\nFat loss • Strength • Nutrition • Real results\n⬇️ Free coaching assessment — link in bio"
 

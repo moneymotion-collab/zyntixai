@@ -44,7 +44,7 @@ function isItemActive(pathname: string, item: NavItem): boolean {
 function navLinkClass(active: boolean, nested = false) {
   return [
     MOBILE_NAV_LINK,
-    "group relative transition-all duration-200 ease-out",
+    "saas-focus-ring group relative transition-all duration-200 ease-out",
     nested ? "py-2 text-sm" : "py-2.5 text-[15px]",
     active
       ? "bg-gradient-to-r from-white/[0.14] via-white/[0.08] to-white/[0.03] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_8px_24px_rgba(0,0,0,0.18)] ring-1 ring-white/10"
@@ -155,10 +155,8 @@ function SidebarContent({
         <div className="mb-8 border-b border-white/[0.06] pb-6">
           <FitCoreLogo
             size="md"
-            showWordmark
-            subtitle="Coaching Platform"
+            variant="full"
             href="/dashboard"
-            wordmarkClassName="text-xl lg:text-[1.35rem]"
           />
         </div>
 
@@ -178,7 +176,7 @@ function SidebarContent({
                         onClick={() => toggleGroup(item.name)}
                         className={[
                           MOBILE_NAV_LINK,
-                          "group w-full justify-between py-2.5 text-left text-[15px] font-medium transition-all duration-200 ease-out",
+                          "saas-focus-ring group w-full justify-between py-2.5 text-left text-[15px] font-medium transition-all duration-200 ease-out",
                           groupActive
                             ? "bg-white/[0.05] text-white ring-1 ring-white/10"
                             : "text-slate-400 hover:bg-white/[0.06] hover:text-slate-100",
@@ -312,7 +310,7 @@ export default function Sidebar() {
   return (
     <>
       <div className={`flex w-full items-center justify-between border-b border-white/[0.06] bg-[#050816] px-4 py-3 text-white md:hidden ${MOBILE_SAFE_TOP}`}>
-        <FitCoreLogo size="sm" showWordmark href="/dashboard" wordmarkClassName="text-lg" />
+        <FitCoreLogo size="sm" variant="mark" href="/dashboard" />
 
         <button
           type="button"

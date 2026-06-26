@@ -30,7 +30,7 @@ function buildMockVideoScript(): VideoScript {
       {
         text: "Most lifters skip the prep that unlocks power.",
         visual:
-          "FitCore Coach mascot in a dim gym, pointing at a skipped warm-up checklist on a tablet.",
+          "Zyntix Coach mascot in a dim gym, pointing at a skipped warm-up checklist on a tablet.",
         image_prompt: "",
         camera_motion: "slow zoom in",
         transition: "motion blur",
@@ -57,15 +57,15 @@ function buildMockVideoScript(): VideoScript {
       ],
       mascot,
     ),
-    cta: "Follow FitCore Coach for smarter training.",
+    cta: "Follow Zyntix Coach for smarter training.",
     thumbnail_title: "Stop Guessing",
     thumbnail_text: "Fix your warm-up in 90 seconds",
     thumbnail_visual:
-      "FitCore Coach mascot close-up, neon blue rim light, bold cover composition on dark gym background.",
+      "Zyntix Coach mascot close-up, neon blue rim light, bold cover composition on dark gym background.",
     musicMood: "confident, energetic, premium",
     caption:
-      "Your warm-up is either building your session or killing it. FitCore Coach breaks down the 90-second fix.",
-    hashtags: ["fitness", "warmup", "gymtips", "FitCoreCoach", "reels"],
+      "Your warm-up is either building your session or killing it. Zyntix Coach breaks down the 90-second fix.",
+    hashtags: ["fitness", "warmup", "gymtips", "ZyntixCoach", "reels"],
   }
 }
 

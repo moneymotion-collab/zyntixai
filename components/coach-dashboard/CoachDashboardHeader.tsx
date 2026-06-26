@@ -2,7 +2,6 @@
 
 import { Activity, AlertTriangle, CalendarDays, Sparkles } from "lucide-react"
 import { FitCoreLogoMark } from "@/components/brand/FitCoreLogo"
-import { FITCORE_AI_BRAND_NAME } from "@/lib/brand/fitcore-ai"
 import { CommandCenterStatusBadge } from "@/components/coach-dashboard/coach-dashboard-ui"
 import type { CommandCenterStatus } from "@/lib/coach-dashboard/resolve-command-center-status"
 
@@ -29,7 +28,7 @@ export default function CoachDashboardHeader({
   return (
     <header
       data-tour="dashboard-overview"
-      className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-cyan-500/[0.08] via-white/[0.03] to-violet-500/[0.08] p-6 shadow-[0_20px_80px_rgba(0,0,0,0.25)] sm:p-8"
+      className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-cyan-500/[0.08] via-white/[0.03] to-violet-500/[0.08] p-6 shadow-[0_20px_80px_rgba(0,0,0,0.25)] sm:p-8"
     >
       <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-cyan-500/10 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-violet-500/10 blur-3xl" />
@@ -38,9 +37,6 @@ export default function CoachDashboardHeader({
         <div className="min-w-0 flex-1">
           <div className="mb-3 flex items-center gap-2.5">
             <FitCoreLogoMark size="xs" />
-            <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-cyan-400/90">
-              {FITCORE_AI_BRAND_NAME}
-            </p>
           </div>
           <h1 className="mt-2.5 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-[2.75rem] lg:leading-tight">
             Welcome back, {coachDisplayName}

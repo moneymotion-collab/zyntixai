@@ -626,7 +626,7 @@ export default function ClientCheckInSection({
                 Export professional report
               </h3>
               <p className="mt-2 max-w-xl text-sm leading-relaxed text-gray-400">
-                Download a FitCore AI-branded PDF with weekly summary, goals, alerts,
+                Download a ZyntixAI-branded PDF with weekly summary, goals, alerts,
                 AI coaching insights, and coach notes.
               </p>
             </div>

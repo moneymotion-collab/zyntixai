@@ -32,8 +32,8 @@ export default function ErrorStateBanner({
   const titleClass = isLight ? "text-red-900" : "text-white"
   const messageClass = isLight ? "text-red-700" : "opacity-90"
   const buttonClass = isLight
-    ? "inline-flex items-center gap-2 rounded-xl border border-red-200 bg-white px-4 py-2 text-sm font-medium text-red-800 transition hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-50"
-    : "inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white transition hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-50"
+    ? "fitcore-btn-secondary saas-focus-ring min-h-11 disabled:cursor-not-allowed disabled:opacity-50"
+    : "btn-ghost saas-focus-ring min-h-11 px-4 py-2.5 text-sm font-medium disabled:cursor-not-allowed disabled:opacity-50"
 
   return (
     <div

@@ -140,8 +140,8 @@ export function buildFitCoreRenderPropsFromProject(
   project: ProjectFields,
   script: VideoScript,
 ): FitCoreRenderProps {
-  const brandName = project.brand_name?.trim() || "FitCore AI"
-  const title = brandName || script.hook?.trim() || "FitCore AI"
+  const brandName = project.brand_name?.trim() || "ZyntixAI"
+  const title = brandName || script.hook?.trim() || "ZyntixAI"
   const explicitHook = project.hook?.trim() || script.hook?.trim() || ""
   const cta = project.cta?.trim() || script.cta?.trim() || DEFAULT_PLATFORM_CTA
 

@@ -270,7 +270,7 @@ export default function VideoGeneratorPage() {
         }
       })
       .catch(() => {
-        // Keep FitCore defaults when brand profile is unavailable.
+        // Keep ZyntixAI defaults when brand profile is unavailable.
       })
   }, [])
 
@@ -1028,7 +1028,7 @@ export default function VideoGeneratorPage() {
               <input
                 value={mascotName}
                 onChange={(e) => setMascotName(e.target.value)}
-                placeholder="FitCore AI"
+                placeholder="ZyntixAI"
                 className={premiumInputClass}
               />
             </div>
@@ -1077,7 +1077,7 @@ export default function VideoGeneratorPage() {
             placeholder={
               stylePreference === "app_showcase"
                 ? "Example: 30-second tour — problem, platform overview, members, workouts, nutrition, progress, marketing AI, analytics, CTA."
-                : "Example: Show fitness coaches how FitCore AI replaces CRM, programming, nutrition, scheduling, and marketing tools in one platform."
+                : "Example: Show fitness coaches how ZyntixAI replaces CRM, programming, nutrition, scheduling, and marketing tools in one platform."
             }
             className={`${premiumTextareaClass} min-h-[140px]`}
           />

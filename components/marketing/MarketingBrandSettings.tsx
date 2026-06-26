@@ -73,7 +73,7 @@ type MarketingBrandSettingsProps = {
 
 export default function MarketingBrandSettings({
   title = "Brand",
-  description = "Tell FitCore AI about your gym so content ideas match your brand and goals.",
+  description = "Tell ZyntixAI about your gym so content ideas match your brand and goals.",
   saveSuccessMessage = "Brand settings saved.",
 }: MarketingBrandSettingsProps) {
   const supabase = useMemo(() => createClient(), [])

@@ -27,8 +27,8 @@ export const MARKETING_LAUNCH_WORKFLOW_ID = "social_media_manager" as const
 export const FITCORE_AI_LAUNCH_CAMPAIGN_ID = "fitcore_ai_launch" as const
 
 export const FITCORE_AI_LAUNCH_CAMPAIGN = {
-  brandName: "FitCore AI",
-  label: "FitCore AI Launch Campaign",
+  brandName: "ZyntixAI",
+  label: "ZyntixAI Launch Campaign",
   targetAudience:
     "Personal trainers, gym owners, and online fitness coaches",
   goal:
@@ -36,7 +36,7 @@ export const FITCORE_AI_LAUNCH_CAMPAIGN = {
   style:
     "Premium, clean, modern SaaS, professional fitness business, high trust",
   defaultPrompt:
-    "Premium SaaS launch campaign video for FitCore AI. A personal trainer uses the app to create, plan, publish, and improve social media content. Full-screen populated UI, slow camera only, no blurry text, no extreme zoom.",
+    "Premium SaaS launch campaign video for ZyntixAI. A personal trainer uses the app to create, plan, publish, and improve social media content. Full-screen populated UI, slow camera only, no blurry text, no extreme zoom.",
 } as const
 
 export type MarketingLaunchScene = LaunchProductionScene
@@ -46,7 +46,7 @@ export const MARKETING_LAUNCH_ZOOM_LEVEL = LAUNCH_VIDEO_ZOOM_LEVEL
 export const MARKETING_LAUNCH_MAX_ZOOM_LEVEL = LAUNCH_VIDEO_MAX_ZOOM_LEVEL
 
 export const MARKETING_LAUNCH_CAMERA_RULES = formatLaunchVideoCameraRules({
-  title: "FitCore AI launch campaign — camera & composition rules (STRICT)",
+  title: "ZyntixAI launch campaign — camera & composition rules (STRICT)",
   extraRules: [
     "Do not show empty screens. Every scene must show populated UI: filled KPI cards, idea cards, viral scores, calendar chips, pipeline statuses, and analytics metrics.",
     "Make it feel like a real personal trainer is using the app: natural cursor paths, realistic hover states, coach-paced interactions.",
@@ -102,8 +102,8 @@ export const MARKETING_LAUNCH_VIDEO_SCENES: readonly MarketingLaunchScene[] =
 export const MARKETING_LAUNCH_SCENE_COUNT = MARKETING_LAUNCH_VIDEO_SCENES.length
 
 const LAUNCH_KEYWORDS = [
-  "fitcore ai",
-  "fitcore",
+  "zyntixai",
+  "zyntix",
   "marketing ai",
   "marketing launch",
   "launch campaign",
@@ -159,7 +159,7 @@ function sceneToBeat(scene: MarketingLaunchScene): WorkflowSceneBeat {
     duration: scene.durationSeconds,
     professional_purpose: scene.valueMessage,
     visualDirection: [
-      `FitCore AI launch campaign — ${scene.screenName}`,
+      `ZyntixAI launch campaign — ${scene.screenName}`,
       scene.focusZone,
       scene.cameraInstruction,
       FITCORE_AI_LAUNCH_CAMPAIGN.style,

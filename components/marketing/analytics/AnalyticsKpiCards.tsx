@@ -97,7 +97,7 @@ export default function AnalyticsKpiCards({ kpis }: { kpis: AnalyticsKpis }) {
         return (
           <article
             key={card.label}
-            className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_8px_30px_rgba(15,23,42,0.06)] sm:p-7"
+            className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-slate-300 hover:shadow-md sm:p-6"
           >
             <div
               className={`absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${card.bar}`}

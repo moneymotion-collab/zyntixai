@@ -60,6 +60,18 @@ export const SUCCESS_TOAST = {
     title: "Session Scheduled",
     description: "The session appears on your calendar and member profile.",
   },
+  sessionCompleted: {
+    title: "Session Completed",
+    description: "Great work — the session is marked done on your calendar.",
+  },
+  sessionCancelled: {
+    title: "Session Cancelled",
+    description: "The session status has been updated.",
+  },
+  sessionStatusUpdated: {
+    title: "Session Updated",
+    description: "Session status saved.",
+  },
   campaignPublished: {
     title: "Campaign Published",
     description: "Your campaign is live in the publishing pipeline.",

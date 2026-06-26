@@ -47,7 +47,7 @@ export default function DemoVideoSection() {
             Product Demo
           </span>
           <h2 className={landingHeadingClass}>
-            See <span className="text-gradient">FitCore AI</span> in Action
+            See <span className="text-gradient">ZyntixAI</span> in Action
           </h2>
           <p className={landingSubheadingClass}>{DEMO_VIDEO_SUBHEADLINE}</p>
         </motion.div>
@@ -69,7 +69,7 @@ export default function DemoVideoSection() {
                   <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/80" />
                 </div>
                 <span className="mx-auto truncate text-[11px] text-slate-500 sm:text-xs">
-                  FitCore AI — Product Demo
+                  ZyntixAI — Product Demo
                 </span>
               </div>
               <DemoVideoPlayer />

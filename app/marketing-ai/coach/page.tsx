@@ -199,7 +199,7 @@ export default function MarketingCoachPage() {
               </div>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wider text-violet-600">
-                  FitCore AI
+                  ZyntixAI
                 </p>
                 <h1 className="text-xl font-bold text-slate-900 sm:text-2xl">
                   Marketing Coach
@@ -308,7 +308,7 @@ export default function MarketingCoachPage() {
                           <div className="mb-1 flex items-center gap-1.5">
                             <Sparkles className="h-3.5 w-3.5 text-violet-500" />
                             <span className="text-xs font-medium text-violet-600">
-                              FitCore AI Coach
+                              ZyntixAI Coach
                             </span>
                           </div>
                         ) : null}

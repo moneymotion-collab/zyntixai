@@ -97,20 +97,20 @@ export const SAAS_VARIANT_LABELS: Record<SaasVisualVariant, string> = {
 }
 
 export const SAAS_VARIANT_PATHS: Record<SaasVisualVariant, string> = {
-  problem: "fitcore.ai",
-  platform_overview: "app.fitcore.ai/dashboard",
-  dashboard: "app.fitcore.ai/dashboard",
-  members: "app.fitcore.ai/members",
-  workouts: "app.fitcore.ai/workouts",
-  nutrition: "app.fitcore.ai/nutrition",
-  progress: "app.fitcore.ai/progress",
-  sessions: "app.fitcore.ai/sessions",
-  marketing_ai: "app.fitcore.ai/marketing",
-  content_ideas: "app.fitcore.ai/marketing/content-ideas",
-  calendar: "app.fitcore.ai/marketing/calendar",
-  analytics: "app.fitcore.ai/analytics",
-  publishing: "app.fitcore.ai/marketing/published",
-  ai_coach: "app.fitcore.ai/ai-coach",
+  problem: "zyntixai.com",
+  platform_overview: "app.zyntixai.com/dashboard",
+  dashboard: "app.zyntixai.com/dashboard",
+  members: "app.zyntixai.com/members",
+  workouts: "app.zyntixai.com/workouts",
+  nutrition: "app.zyntixai.com/nutrition",
+  progress: "app.zyntixai.com/progress",
+  sessions: "app.zyntixai.com/sessions",
+  marketing_ai: "app.zyntixai.com/marketing",
+  content_ideas: "app.zyntixai.com/marketing/content-ideas",
+  calendar: "app.zyntixai.com/marketing/calendar",
+  analytics: "app.zyntixai.com/analytics",
+  publishing: "app.zyntixai.com/marketing/published",
+  ai_coach: "app.zyntixai.com/ai-coach",
 }
 
 export {

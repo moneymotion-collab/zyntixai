@@ -314,7 +314,7 @@ export default function CampaignGeneratorPage() {
                 Campaign Generator
               </h1>
               <p className="mt-2 max-w-2xl text-gray-500">
-                Plan multi-week marketing campaigns for FitCore AI with one
+                Plan multi-week marketing campaigns for ZyntixAI with one
                 AI-generated post per day — hooks, captions, hashtags, and CTAs.
               </p>
             </div>

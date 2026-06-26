@@ -1,7 +1,7 @@
 import type { FitCoreVisualIdentity } from "@/lib/marketing/visual-identity/types"
 
-export const FITCORE_BRAND_NAME = "FitCore AI"
-export const FITCORE_PRODUCT_NAME = "FitCore Coach"
+export const FITCORE_BRAND_NAME = "ZyntixAI"
+export const FITCORE_PRODUCT_NAME = "Zyntix Coach"
 
 export const FITCORE_VISUAL_COLORS = {
   deepBlack: "#050505",

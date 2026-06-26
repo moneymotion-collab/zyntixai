@@ -88,7 +88,7 @@ export function ProblemPanel({ frame, fps }: { frame: number; fps: number }) {
           fontFamily: FONT,
         }}
       >
-        → Replace all of this with FitCore AI
+        → Replace all of this with ZyntixAI
       </div>
     </div>
   );

@@ -23,41 +23,38 @@ import type {
   DailyCoachOverview,
   DailyCoachOverviewMetric,
 } from "@/lib/coach-dashboard/compute-daily-coach-overview"
+import {
+  buildAddMemberUrl,
+  buildCreateWorkoutUrl,
+  buildNutritionUrl,
+  buildSessionsNewUrl,
+} from "@/lib/coach-dashboard/coach-action-links"
 
 type DailyCoachOverviewSectionProps = {
   overview: DailyCoachOverview
 }
 
-const METRIC_ICONS: Record<DailyCoachOverviewMetric["id"], LucideIcon> = {
-  sessions_today: CalendarClock,
-  reminders_due_today: Bell,
-  missing_check_ins: ClipboardList,
-  missing_habits: Leaf,
-  no_workout_7d: Dumbbell,
-  no_progress_14d: ScrollText,
-}
-
 const QUICK_ACTIONS = [
   {
-    href: "/members",
+    href: buildAddMemberUrl(),
     label: "Add member",
     description: "Expand your roster",
     icon: UserPlus,
   },
   {
-    href: "/workouts/new",
+    href: buildCreateWorkoutUrl(),
     label: "Create workout",
     description: "Build a training plan",
     icon: Dumbbell,
   },
   {
-    href: "/nutrition",
+    href: buildNutritionUrl(),
     label: "Create nutrition plan",
     description: "Set macros and meals",
     icon: Apple,
   },
   {
-    href: "/sessions?new=1",
+    href: buildSessionsNewUrl(),
     label: "Schedule session",
     description: "Book coaching time",
     icon: CalendarClock,
@@ -69,6 +66,15 @@ const QUICK_ACTIONS = [
     icon: LayoutGrid,
   },
 ] as const
+
+const METRIC_ICONS: Record<DailyCoachOverviewMetric["id"], LucideIcon> = {
+  sessions_today: CalendarClock,
+  reminders_due_today: Bell,
+  missing_check_ins: ClipboardList,
+  missing_habits: Leaf,
+  no_workout_7d: Dumbbell,
+  no_progress_14d: ScrollText,
+}
 
 function DailyMetricCard({ metric }: { metric: DailyCoachOverviewMetric }) {
   const Icon = METRIC_ICONS[metric.id]

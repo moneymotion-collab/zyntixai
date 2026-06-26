@@ -62,13 +62,13 @@ export const DEMO_FEATURE_HIGHLIGHTS: readonly DemoFeatureHighlight[] = [
   },
   {
     label: "Instagram Publishing",
-    description: "Draft, schedule, and publish without leaving FitCore AI.",
+    description: "Draft, schedule, and publish without leaving ZyntixAI.",
     icon: Share2,
     accent: "from-rose-500/25 to-pink-500/10 text-rose-300",
   },
 ] as const
 
-export const DEMO_VIDEO_HEADLINE = "See FitCore AI in Action"
+export const DEMO_VIDEO_HEADLINE = "See ZyntixAI in Action"
 
 export const DEMO_VIDEO_SUBHEADLINE =
   "Manage clients, build workouts, track progress and grow your coaching business from one platform."

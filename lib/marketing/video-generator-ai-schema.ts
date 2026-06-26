@@ -51,7 +51,7 @@ export const VIDEO_GENERATOR_AI_SCENE_SCHEMA = {
   visual_description: "Fitness business owner at standing desk, holographic command center glowing electric blue in dark modern office",
   workflow_step: "dashboard",
   asset_key: "dashboard",
-  visual: "Full FitCore AI dashboard overview",
+  visual: "Full ZyntixAI dashboard overview",
   image_prompt: "",
   ui_focus_area: "",
   cursor_action: "",
@@ -198,19 +198,19 @@ export function buildAppShowcaseAiJsonExample(input: {
     scenes: buildPlatformModuleJsonSceneExamples(),
     cta: "Start your free trial — run your entire coaching business in one place.",
     caption:
-      "See how FitCore Coach connects your coaching workflow in one platform.",
+      "See how Zyntix Coach connects your coaching workflow in one platform.",
     hashtags: [
       "fitnessbusiness",
       "personaltrainer",
       "saas",
       "gymowner",
-      "FitCoreCoach",
+      "ZyntixCoach",
       "coachingsoftware",
     ],
     thumbnail_title: "RUN YOUR GYM",
     thumbnail_text: "One platform. Every workflow.",
     thumbnail_visual:
-      "FitCore Coach mascot beside premium SaaS dashboard on laptop, neon blue glow, scroll-stopping B2B cover frame.",
+      "Zyntix Coach mascot beside premium SaaS dashboard on laptop, neon blue glow, scroll-stopping B2B cover frame.",
   }
 }
 
@@ -264,7 +264,7 @@ function applySceneSchemaFallbacks(
     scene.text?.trim() ||
     scene.overlay_text?.trim() ||
     plan?.overlay_text ||
-    "See FitCore Coach in action"
+    "See Zyntix Coach in action"
   const overlay_text =
     scene.overlay_text?.trim() || plan?.overlay_text || text
   const visual =
@@ -402,7 +402,7 @@ export function applyVideoGeneratorSchemaFallbacks(
           "coachingsoftware",
           "saas",
           "gymowner",
-          "FitCoreCoach",
+          "ZyntixCoach",
         ]
 
   const thumbnail_title =
@@ -420,7 +420,7 @@ export function applyVideoGeneratorSchemaFallbacks(
   const workflow_summary =
     script.workflow_summary?.trim() ||
     input.workflowSummary?.trim() ||
-    "Show FitCore AI as an all-in-one coaching business platform."
+    "Show ZyntixAI as an all-in-one coaching business platform."
 
   const mascot =
     script.mascot ??

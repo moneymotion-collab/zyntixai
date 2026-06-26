@@ -41,7 +41,7 @@ function floatingCardStyle(
 export default function SceneFallbackVisualCard({
   sceneIndex = 0,
   visualDescription = "",
-  brandLabel = "FitCore AI",
+  brandLabel = "ZyntixAI",
 }: SceneFallbackVisualCardProps) {
   const tagSet = FEATURE_TAG_SETS[sceneIndex % FEATURE_TAG_SETS.length];
   const headline =
@@ -163,7 +163,7 @@ export default function SceneFallbackVisualCard({
                 fontFamily: "system-ui, sans-serif",
               }}
             >
-              app.fitcore.ai/dashboard
+              app.zyntixai.com/dashboard
             </div>
           </div>
 

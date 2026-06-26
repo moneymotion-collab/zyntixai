@@ -148,7 +148,7 @@ export default function RegisterPageClient() {
           formTitle={demoIntent ? "Create Account" : "Start Your Free Trial"}
           formSubtitle={
             demoIntent
-              ? "Create a coach account to explore the FitCore AI demo workspace"
+              ? "Create a coach account to explore the ZyntixAI demo workspace"
               : TRIAL_MESSAGING.tagline
           }
         />
@@ -157,7 +157,7 @@ export default function RegisterPageClient() {
 
         {demoIntent ? (
           <p className="mb-5 rounded-xl border border-cyan-400/25 bg-cyan-500/10 px-4 py-3 text-sm text-cyan-100/90">
-            You&apos;ll get instant access to a fully populated FitCore AI demo
+            You&apos;ll get instant access to a fully populated ZyntixAI demo
             workspace with {demoMemberCountPhrase()}.
           </p>
         ) : null}

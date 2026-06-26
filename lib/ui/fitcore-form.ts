@@ -1,5 +1,5 @@
 /**
- * FitCore AI — global light-surface typography & form tokens.
+ * ZyntixAI — global light-surface typography & form tokens.
  * Styles live in `app/globals.css`.
  */
 export const fitcoreInputClass = "fitcore-input"
@@ -20,3 +20,13 @@ export const premiumInputClass = fitcoreInputClass
 export const premiumSelectClass = fitcoreSelectClass
 /** @deprecated Use `fitcoreTextareaClass` */
 export const premiumTextareaClass = fitcoreTextareaClass
+
+export {
+  saasInputClass,
+  saasSelectClass,
+  saasTextareaClass,
+  saasLabelClass,
+  saasHelperClass,
+  saasFieldErrorClass,
+  saasFieldSuccessClass,
+} from "@/lib/ui/saas-tokens"

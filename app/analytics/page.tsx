@@ -16,19 +16,37 @@ import {
   Activity,
   Calendar,
   Dumbbell,
-  Loader2,
   Salad,
   Users,
 } from "lucide-react"
+import { FITCORE_AI_BRAND_NAME } from "@/lib/brand/fitcore-ai"
 import ProtectedShell from "../components/ProtectedShell"
 import {
   fetchAnalytics,
   type AnalyticsData,
 } from "@/lib/analytics/fetch-analytics"
 import { createClient } from "@/lib/supabase/client"
+import ChartCard from "@/components/ui/chart-card"
+import DashboardStatCard from "@/components/ui/dashboard-stat-card"
+import EmptyState from "@/components/ui/empty-state"
+import ErrorStateBanner from "@/components/ui/error-state-banner"
+import { GlassCardSkeleton, Skeleton } from "@/components/ui/skeleton"
 import SaasEmptyState from "@/components/ui/saas-empty-state"
+import SaasPageHeader from "@/components/ui/saas-page-header"
 import { EMPTY_STATE_ICONS } from "@/lib/copy/empty-state-presets"
 import { SAAS_EMPTY } from "@/lib/copy/saas-empty-states"
+import {
+  SAAS_KPI_GRID,
+  SAAS_PAGE_MAIN,
+  SAAS_PAGE_SECTION_GAP,
+} from "@/lib/ui/saas-page-layout"
+import { MOBILE_PAGE_ROOT } from "@/lib/ui/mobile-layout"
+
+const CHART_TOOLTIP_STYLE = {
+  background: "#0b1224",
+  border: "1px solid rgba(255,255,255,0.1)",
+  borderRadius: 12,
+} as const
 
 export default function AnalyticsPage() {
   const supabase = createClient()
@@ -54,68 +72,59 @@ export default function AnalyticsPage() {
 
   return (
     <ProtectedShell allowed={["admin", "coach"]}>
-      <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
-        <header className="mb-8">
-          <p className="text-sm font-medium uppercase tracking-[0.3em] text-cyan-400">
-            FitCore AI
-          </p>
-          <h1 className="mt-2 text-4xl font-bold sm:text-5xl">Analytics</h1>
-          <p className="mt-2 text-gray-400">
-            Live insights across members, workouts, and sessions.
-          </p>
-        </header>
+      <main className={`${SAAS_PAGE_MAIN} ${MOBILE_PAGE_ROOT} ${SAAS_PAGE_SECTION_GAP}`}>
+        <SaasPageHeader
+          eyebrow={FITCORE_AI_BRAND_NAME}
+          title="Analytics"
+          description="Live insights across members, workouts, and sessions."
+        />
 
         {errorMessage ? (
-          <div className="mb-6 rounded-2xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-200">
-            {errorMessage}
-          </div>
+          <ErrorStateBanner message={errorMessage} embedded />
         ) : null}
 
         {loading ? (
-          <div className="flex items-center gap-2 py-20 text-gray-400">
-            <Loader2 className="h-6 w-6 animate-spin text-cyan-400" />
-            Loading analytics…
-          </div>
+          <AnalyticsPageSkeleton />
         ) : !data ? (
           <SaasEmptyState preset="analytics" />
         ) : (
           <>
-            <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
-              <KpiCard
+            <div className={SAAS_KPI_GRID}>
+              <DashboardStatCard
                 label="Total members"
                 value={String(data.kpis.totalMembers)}
                 icon={Users}
-                accent="text-cyan-400"
+                accent="from-cyan-500/20 to-blue-500/10 text-cyan-300"
               />
-              <KpiCard
+              <DashboardStatCard
                 label="Active members"
                 value={String(data.kpis.activeMembers)}
                 icon={Activity}
-                accent="text-green-400"
+                accent="from-emerald-500/20 to-teal-500/10 text-emerald-300"
               />
-              <KpiCard
+              <DashboardStatCard
                 label="Workouts this week"
                 value={String(data.kpis.workoutsThisWeek)}
                 icon={Dumbbell}
-                accent="text-blue-400"
+                accent="from-indigo-500/20 to-violet-500/10 text-indigo-300"
               />
-              <KpiCard
+              <DashboardStatCard
                 label="Completed workouts"
                 value={String(data.kpis.completedWorkouts)}
                 icon={Dumbbell}
-                accent="text-purple-400"
+                accent="from-violet-500/20 to-purple-500/10 text-violet-300"
               />
-              <KpiCard
+              <DashboardStatCard
                 label="Active nutrition plans"
                 value={String(data.kpis.activeNutritionPlans)}
                 icon={Salad}
-                accent="text-emerald-400"
+                accent="from-emerald-500/20 to-green-500/10 text-emerald-300"
               />
-              <KpiCard
+              <DashboardStatCard
                 label="Sessions this week"
                 value={String(data.kpis.sessionsThisWeek)}
                 icon={Calendar}
-                accent="text-amber-400"
+                accent="from-amber-500/20 to-orange-500/10 text-amber-300"
               />
             </div>
 
@@ -129,13 +138,7 @@ export default function AnalyticsPage() {
                       <CartesianGrid stroke="#1e293b" strokeDasharray="3 3" />
                       <XAxis dataKey="date" stroke="#64748b" fontSize={11} />
                       <YAxis stroke="#64748b" fontSize={11} />
-                      <Tooltip
-                        contentStyle={{
-                          background: "#0b1224",
-                          border: "1px solid rgba(255,255,255,0.1)",
-                          borderRadius: 12,
-                        }}
-                      />
+                      <Tooltip contentStyle={CHART_TOOLTIP_STYLE} />
                       <Line
                         type="monotone"
                         dataKey="weight"
@@ -148,10 +151,7 @@ export default function AnalyticsPage() {
                 )}
               </ChartCard>
 
-              <ChartCard
-                title="Workout completions"
-                subtitle="By period"
-              >
+              <ChartCard title="Workout completions" subtitle="By period">
                 {data.workoutCompletions.length === 0 ? (
                   <EmptyChart />
                 ) : (
@@ -160,13 +160,7 @@ export default function AnalyticsPage() {
                       <CartesianGrid stroke="#1e293b" strokeDasharray="3 3" />
                       <XAxis dataKey="week" stroke="#64748b" fontSize={11} />
                       <YAxis stroke="#64748b" fontSize={11} allowDecimals={false} />
-                      <Tooltip
-                        contentStyle={{
-                          background: "#0b1224",
-                          border: "1px solid rgba(255,255,255,0.1)",
-                          borderRadius: 12,
-                        }}
-                      />
+                      <Tooltip contentStyle={CHART_TOOLTIP_STYLE} />
                       <Bar dataKey="count" fill="#6366f1" radius={[8, 8, 0, 0]} />
                     </BarChart>
                   </ResponsiveContainer>
@@ -186,13 +180,7 @@ export default function AnalyticsPage() {
                       <CartesianGrid stroke="#1e293b" strokeDasharray="3 3" />
                       <XAxis dataKey="month" stroke="#64748b" fontSize={11} />
                       <YAxis stroke="#64748b" fontSize={11} allowDecimals={false} />
-                      <Tooltip
-                        contentStyle={{
-                          background: "#0b1224",
-                          border: "1px solid rgba(255,255,255,0.1)",
-                          borderRadius: 12,
-                        }}
-                      />
+                      <Tooltip contentStyle={CHART_TOOLTIP_STYLE} />
                       <Bar dataKey="count" fill="#22d3ee" radius={[8, 8, 0, 0]} />
                     </BarChart>
                   </ResponsiveContainer>
@@ -206,62 +194,40 @@ export default function AnalyticsPage() {
   )
 }
 
-function KpiCard({
-  label,
-  value,
-  icon: Icon,
-  accent,
-}: {
-  label: string
-  value: string
-  icon: typeof Users
-  accent: string
-}) {
+function AnalyticsPageSkeleton() {
   return (
-    <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
-      <div className="flex items-center justify-between">
-        <p className="text-sm text-gray-400">{label}</p>
-        <Icon className={`h-5 w-5 ${accent}`} />
+    <>
+      <div className={SAAS_KPI_GRID}>
+        {Array.from({ length: 6 }).map((_, index) => (
+          <GlassCardSkeleton key={index} className="h-[168px]">
+            <Skeleton className="h-full w-full" />
+          </GlassCardSkeleton>
+        ))}
       </div>
-      <p className="mt-4 text-3xl font-bold text-white">{value}</p>
-    </div>
-  )
-}
-
-function ChartCard({
-  title,
-  subtitle,
-  children,
-  className = "",
-}: {
-  title: string
-  subtitle: string
-  children: React.ReactNode
-  className?: string
-}) {
-  return (
-    <div
-      className={`rounded-3xl border border-white/10 bg-white/5 p-6 ${className}`}
-    >
-      <h2 className="text-xl font-bold text-white">{title}</h2>
-      <p className="mt-1 text-sm text-gray-400">{subtitle}</p>
-      <div className="mt-6 rounded-2xl bg-[#0b1224] p-4">{children}</div>
-    </div>
+      <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
+        <GlassCardSkeleton className="h-[360px]">
+          <Skeleton className="h-full w-full" />
+        </GlassCardSkeleton>
+        <GlassCardSkeleton className="h-[360px]">
+          <Skeleton className="h-full w-full" />
+        </GlassCardSkeleton>
+        <GlassCardSkeleton className="h-[360px] xl:col-span-2">
+          <Skeleton className="h-full w-full" />
+        </GlassCardSkeleton>
+      </div>
+    </>
   )
 }
 
 function EmptyChart() {
   return (
-    <div className="flex h-[260px] flex-col items-center justify-center px-6 text-center">
-      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-indigo-500/15 to-cyan-500/10 text-cyan-300">
-        {EMPTY_STATE_ICONS.analyticsChart}
-      </div>
-      <p className="text-sm font-medium text-gray-300">
-        {SAAS_EMPTY.analyticsChart.title}
-      </p>
-      <p className="mt-1 max-w-xs text-xs leading-relaxed text-gray-500">
-        {SAAS_EMPTY.analyticsChart.description}
-      </p>
-    </div>
+    <EmptyState
+      compact
+      title={SAAS_EMPTY.analyticsChart.title}
+      description={SAAS_EMPTY.analyticsChart.description}
+      icon={EMPTY_STATE_ICONS.analyticsChart}
+      variant="dark"
+      style="dashed"
+    />
   )
 }

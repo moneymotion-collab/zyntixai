@@ -4,7 +4,11 @@ import Link from "next/link"
 import { useParams } from "next/navigation"
 import { useCallback, useEffect, useState } from "react"
 import ClientProfileCard from "@/components/members/ClientProfileCard"
-import MemberDetailMobileNav from "@/components/members/MemberDetailMobileNav"
+import MemberDetailSectionNav from "@/components/members/MemberDetailMobileNav"
+import {
+  buildProgressMemberUrl,
+} from "@/lib/coach-dashboard/coach-action-links"
+import CoachMemberActionButtons from "@/components/coach-dashboard/CoachMemberActionButtons"
 import GoalProgressCard from "@/components/members/GoalProgressCard"
 import MemberAssignedWorkoutsSection from "@/components/members/MemberAssignedWorkoutsSection"
 import MemberCheckInSection from "@/components/members/MemberCheckInSection"
@@ -322,12 +326,19 @@ export default function MemberDetailPage() {
           />
         ) : null}
 
-        <MemberDetailMobileNav />
+        <CoachMemberActionButtons
+          memberId={member.id}
+          memberName={member.full_name ?? "Member"}
+          layout="wrap"
+        />
+
+        <MemberDetailSectionNav memberId={member.id} />
 
         <div id="member-workouts" className="scroll-mt-24">
         <MemberAssignedWorkoutsSection
           assignments={workoutAssignments}
           loading={workoutsLoading}
+          memberId={member.id}
         />
         </div>
 
@@ -517,7 +528,7 @@ export default function MemberDetailPage() {
               Progress
             </h2>
             <Link
-              href="/progress"
+              href={buildProgressMemberUrl(member.id)}
               className="text-sm font-medium text-cyan-600 hover:underline"
             >
               Full progress →

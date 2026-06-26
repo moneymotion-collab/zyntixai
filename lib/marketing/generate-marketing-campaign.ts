@@ -40,13 +40,13 @@ function buildUserPrompt(input: GenerateMarketingCampaignInput): string {
   const brandBlock = input.brand
     ? buildBrandContext({
         ...input.brand,
-        name: input.brand.name || "FitCore AI",
+        name: input.brand.name || "ZyntixAI",
         mascot_name: "",
         mascot_description: "",
         mascot_style: "",
         mascot_voice_tone: "",
       })
-    : "Brand: FitCore AI — AI-powered gym management and marketing platform."
+    : "Brand: ZyntixAI — AI-powered gym management and marketing platform."
 
   return `You are a senior fitness marketing strategist.
 

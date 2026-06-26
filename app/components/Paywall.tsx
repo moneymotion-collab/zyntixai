@@ -1,7 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import { FitCoreLogoMark } from "@/components/brand/FitCoreLogo"
+import { ZyntixLogoFull } from "@/components/brand/FitCoreLogo"
+import { FITCORE_AI_BRAND_NAME } from "@/lib/brand/fitcore-ai"
 import { useBillingPortal } from "@/app/hooks/useBillingPortal"
 import { useSubscribe } from "@/app/hooks/useSubscribe"
 import { useSubscriptionAccess } from "@/app/hooks/useSubscriptionAccess"
@@ -35,9 +36,9 @@ export default function Paywall() {
         : "Your free trial is active"
   const description =
     trialStatus === "trial ended"
-      ? "Subscribe to keep using FitCore AI with your coach, workouts, and nutrition plans."
+      ? `Subscribe to keep using ${FITCORE_AI_BRAND_NAME} with your coach, workouts, and nutrition plans.`
       : trialStatus === "trial not started"
-        ? "Your account needs a trial before you can use FitCore AI. Sign out and sign in again, or contact support if this keeps happening."
+        ? `Your account needs a trial before you can use ${FITCORE_AI_BRAND_NAME}. Sign out and sign in again, or contact support if this keeps happening.`
         : "Something went wrong while loading your access. Try signing out and back in."
   const currentPlanLabel = getBillingPlanLabel(profile?.billing_plan)
 
@@ -47,7 +48,7 @@ export default function Paywall() {
       <div className="absolute bottom-[-100px] right-[-100px] h-[320px] w-[320px] rounded-full bg-purple-500/20 blur-[120px]" />
 
       <div className="relative z-10 w-full max-w-md text-center">
-        <FitCoreLogoMark size="lg" className="mx-auto mb-6 shadow-lg shadow-cyan-500/10" />
+        <ZyntixLogoFull size="md" className="mx-auto mb-6" />
 
         <h1 className="text-4xl font-bold tracking-tight">{heading}</h1>
         <p className="mt-3 text-gray-400">{description}</p>

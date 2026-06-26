@@ -303,7 +303,7 @@ ${brandContext}
       ...scene,
       image_prompt:
         scene.image_prompt?.trim() ||
-        `Modern 3D cartoon SaaS commercial scene featuring the FitCore Coach mascot. ${scene.visual || scene.text}. Premium business style, cinematic lighting, clean professional layout, vertical 9:16. No celebrities, no public figures, no copyrighted characters.`,
+        `Modern 3D cartoon SaaS commercial scene featuring the Zyntix Coach mascot. ${scene.visual || scene.text}. Premium business style, cinematic lighting, clean professional layout, vertical 9:16. No celebrities, no public figures, no copyrighted characters.`,
     }))
 
     const videoScript = {

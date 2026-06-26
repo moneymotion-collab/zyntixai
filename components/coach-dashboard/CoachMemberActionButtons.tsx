@@ -6,8 +6,10 @@ import {
   BarChart3,
   CalendarClock,
   FileDown,
+  MessageSquare,
   NotebookPen,
   Target,
+  Dumbbell,
 } from "lucide-react"
 import CoachCheckInFieldModal, {
   type CoachCheckInFieldMode,
@@ -15,6 +17,8 @@ import CoachCheckInFieldModal, {
 import Toast, { type ToastPayload } from "@/app/components/Toast"
 import { successToast } from "@/lib/copy/success-toasts"
 import {
+  buildAiCoachUrl,
+  buildAssignWorkoutUrl,
   buildProgressMemberUrl,
   buildProgressReportUrl,
   buildScheduleSessionUrl,
@@ -47,6 +51,14 @@ export default function CoachMemberActionButtons({
   return (
     <>
       <div className={containerClass} onClick={(event) => event.stopPropagation()}>
+        <Link href={buildAssignWorkoutUrl(memberId)} className={ACTION_BTN}>
+          <Dumbbell className="h-3.5 w-3.5 text-indigo-400" aria-hidden />
+          Assign Workout
+        </Link>
+        <Link href={buildAiCoachUrl(memberId)} className={ACTION_BTN}>
+          <MessageSquare className="h-3.5 w-3.5 text-purple-400" aria-hidden />
+          AI Coach
+        </Link>
         <Link href={buildProgressMemberUrl(memberId)} className={ACTION_BTN}>
           <BarChart3 className="h-3.5 w-3.5 text-cyan-400" aria-hidden />
           View Progress

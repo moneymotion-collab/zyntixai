@@ -66,7 +66,7 @@ export default function ContentPerformanceRecommendationsSection({
       <div className="p-5 sm:p-6">
         <h2 className="text-xl font-bold text-slate-950">Recommendations</h2>
         <p className="mt-1 text-sm font-medium text-slate-500">
-          Data-driven next steps for FitCore AI marketing
+          Data-driven next steps for ZyntixAI marketing
         </p>
 
         <div className="mt-5 grid gap-4 lg:grid-cols-2">

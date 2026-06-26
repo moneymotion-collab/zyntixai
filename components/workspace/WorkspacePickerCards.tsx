@@ -1,6 +1,7 @@
 "use client"
 
 import { Building2, Sparkles } from "lucide-react"
+import { FITCORE_AI_BRAND_NAME } from "@/lib/brand/fitcore-ai"
 import type { WorkspaceMode } from "@/lib/workspace/workspace-mode"
 import { demoMemberCountPhrase } from "@/lib/demo/demo-copy"
 
@@ -26,7 +27,7 @@ const CARD_COPY = {
   },
   demo: {
     title: "Explore Demo Workspace",
-    description: `A fully populated FitCore AI environment with ${demoMemberCountPhrase()}, workouts, marketing, and analytics.`,
+    description: `A fully populated ${FITCORE_AI_BRAND_NAME} environment with ${demoMemberCountPhrase()}, workouts, marketing, and analytics.`,
     features: [`${demoMemberCountPhrase()}`, "Marketing & video samples", "Safe to explore & reset"],
     icon: Sparkles,
     accent: "from-cyan-500/20 via-indigo-500/10 to-violet-500/15 border-cyan-400/30",

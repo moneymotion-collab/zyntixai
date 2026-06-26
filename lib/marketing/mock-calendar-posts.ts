@@ -57,7 +57,7 @@ const HOOKS: Record<string, string[]> = {
     "Weekend hours update",
   ],
   Testimonial: [
-    "Why Sarah joined FitCore",
+    "Why Sarah joined ZyntixAI",
     "Best decision I ever made",
   ],
 }

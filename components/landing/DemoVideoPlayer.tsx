@@ -96,7 +96,7 @@ function Mp4Player({
 
 export default function DemoVideoPlayer({ video }: DemoVideoPlayerProps) {
   const resolved = useMemo(() => video ?? resolveLandingDemoVideo(), [video])
-  const title = "FitCore AI product demo"
+  const title = "ZyntixAI product demo"
 
   return (
     <div className="relative aspect-video w-full overflow-hidden bg-[#0a0e17]">

@@ -2,6 +2,13 @@
 
 import Link from "next/link"
 import {
+  buildAddMemberUrl,
+  buildCreateWorkoutUrl,
+  buildAiCoachUrl,
+  buildNutritionUrl,
+  buildSessionsNewUrl,
+} from "@/lib/coach-dashboard/coach-action-links"
+import {
   AlertTriangle,
   Apple,
   ArrowRight,
@@ -17,6 +24,7 @@ import {
   Plus,
   ScrollText,
   TrendingDown,
+  MessageSquare,
   UserPlus,
 } from "lucide-react"
 import CoachBusinessKpiOverview from "@/components/coach-dashboard/CoachBusinessKpiOverview"
@@ -439,40 +447,40 @@ function AttentionCenterSection({ members }: { members: AttentionMember[] }) {
 function QuickActionsSection() {
   const actions = [
     {
-      href: "/members",
+      href: buildAddMemberUrl(),
       label: "Add Member",
       description: "Expand your roster",
       icon: UserPlus,
     },
     {
-      href: "/workouts/new",
+      href: buildCreateWorkoutUrl(),
       label: "Create Workout Plan",
       description: "Build and assign training",
       icon: Dumbbell,
     },
     {
-      href: "/nutrition",
+      href: buildNutritionUrl(),
       label: "Create Nutrition Plan",
       description: "Set macros and goals",
       icon: Apple,
     },
     {
-      href: "/sessions",
+      href: buildSessionsNewUrl(),
       label: "Schedule Session",
       description: "Book 1-on-1 time",
       icon: CalendarClock,
+    },
+    {
+      href: buildAiCoachUrl(),
+      label: "Open AI Coach",
+      description: "Ask AI to plan or adjust programs",
+      icon: MessageSquare,
     },
     {
       href: "/progress",
       label: "Review Progress",
       description: "Track check-ins and alerts",
       icon: BarChart3,
-    },
-    {
-      href: "/progress",
-      label: "Generate Report",
-      description: "Export PDF progress report",
-      icon: FileDown,
     },
   ] as const
 

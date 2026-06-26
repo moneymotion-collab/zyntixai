@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import { FitCoreLogoMark } from "@/components/brand/FitCoreLogo"
+import { ZyntixLogoFull } from "@/components/brand/FitCoreLogo"
 import { FITCORE_AI_BRAND_NAME } from "@/lib/brand/fitcore-ai"
 import WorkspacePickerCards from "@/components/workspace/WorkspacePickerCards"
 import { createClient } from "@/lib/supabase/client"
@@ -88,16 +88,13 @@ export default function WorkspacePage() {
 
       <div className="relative z-10 w-full max-w-3xl">
         <div className="mb-8 flex flex-col items-center text-center">
-          <FitCoreLogoMark size="hero" className="mb-6 shadow-lg shadow-cyan-500/10" />
-          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-cyan-400/90">
-            {FITCORE_AI_BRAND_NAME}
-          </p>
-          <h1 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+          <ZyntixLogoFull size="hero" className="mb-6" priority />
+          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
             Choose your workspace
           </h1>
           <p className="mt-3 max-w-lg text-sm leading-relaxed text-slate-400 sm:text-base">
             Start with your own gym or explore a fully loaded demo environment
-            to see FitCore AI in action.
+            to see {FITCORE_AI_BRAND_NAME} in action.
           </p>
         </div>
 

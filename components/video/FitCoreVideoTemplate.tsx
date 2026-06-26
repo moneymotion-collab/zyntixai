@@ -51,7 +51,7 @@ export type FitCoreVideoTemplateProps = {
   cta?: string;
 };
 
-const DEFAULT_TITLE = "FitCore AI";
+const DEFAULT_TITLE = "ZyntixAI";
 
 function AppMockup({
   scene,
@@ -208,13 +208,13 @@ export default function FitCoreVideoTemplate({
               module: "platform_overview",
               text: ctaText,
               visual_description:
-                "FitCore AI unified platform — members, workouts, nutrition, marketing and analytics",
+                "ZyntixAI unified platform — members, workouts, nutrition, marketing and analytics",
             }}
             sceneIndex={bodyTimeline.length}
             brandLabel={brandLabel}
           />
           <PremiumHeadline
-            text="Replace every tool. Run your business on FitCore AI."
+            text="Replace every tool. Run your business on ZyntixAI."
             variant="cta"
             delaySeconds={0.1}
           />

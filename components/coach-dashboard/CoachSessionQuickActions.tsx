@@ -57,6 +57,7 @@ export default function CoachSessionQuickActions({
     }
 
     setCompleting(false)
+    setToast(successToast("sessionCompleted"))
     onSessionUpdated?.()
   }
 

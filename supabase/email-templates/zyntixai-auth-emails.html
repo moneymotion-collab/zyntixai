@@ -1,0 +1,24 @@
+<!--
+  Supabase Auth email templates — paste into Dashboard → Authentication → Email Templates.
+  Logo URL: https://zyntixai.com/brand/zyntixai-logo.png
+-->
+
+<!-- Confirm signup -->
+<h2 style="margin:0 0 16px;font-family:system-ui,sans-serif;color:#f8fafc;">
+  Welcome to ZyntixAI
+</h2>
+<p style="margin:0 0 24px;font-family:system-ui,sans-serif;color:#94a3b8;line-height:1.6;">
+  Confirm your email to start using ZyntixAI.
+</p>
+<p style="margin:0 0 24px;text-align:center;">
+  <img src="https://zyntixai.com/brand/zyntixai-logo.png" alt="ZyntixAI" width="200" style="max-width:200px;height:auto;" />
+</p>
+<p style="margin:0;">
+  <a href="{{ .ConfirmationURL }}" style="display:inline-block;padding:12px 24px;border-radius:12px;background:linear-gradient(90deg,#7c3aed,#2563eb);color:#fff;font-family:system-ui,sans-serif;font-weight:600;text-decoration:none;">
+    Confirm email
+  </a>
+</p>
+
+<!-- Invite user: replace heading with "You've been invited to ZyntixAI" -->
+<!-- Reset password: replace heading with "Reset your ZyntixAI password" -->
+<!-- Magic link: replace heading with "Sign in to ZyntixAI" -->

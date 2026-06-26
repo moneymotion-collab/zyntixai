@@ -179,7 +179,7 @@ export function buildProgressReportFilename(memberName: string): string {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "")
   const date = new Date().toISOString().slice(0, 10)
-  return `fitcore-progress-report-${slug || "member"}-${date}.pdf`
+  return `zyntixai-progress-report-${slug || "member"}-${date}.pdf`
 }
 
 export async function downloadProgressReportPdf(
@@ -220,7 +220,7 @@ export async function downloadProgressReportPdf(
     doc.setTextColor(255, 255, 255)
     doc.setFont("helvetica", "bold")
     doc.setFontSize(22)
-    doc.text("FitCore AI", margin, 18)
+    doc.text("ZyntixAI", margin, 18)
 
     doc.setFont("helvetica", "normal")
     doc.setFontSize(10)
@@ -388,7 +388,7 @@ export async function downloadProgressReportPdf(
     doc.setFont("helvetica", "normal")
     doc.setFontSize(8)
     doc.setTextColor(...colors.textMuted)
-    doc.text("FitCore AI · Progress Report", margin, pageHeight - 8)
+    doc.text("ZyntixAI · Progress Report", margin, pageHeight - 8)
     doc.text(`Page ${page} of ${pageCount}`, pageWidth - margin, pageHeight - 8, {
       align: "right",
     })

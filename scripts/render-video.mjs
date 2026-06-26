@@ -17,7 +17,7 @@ const inputProps = {
     {
       text: "Scene two from your script",
       duration: 3,
-      visual_description: "FitCore AI coaching dashboard",
+      visual_description: "ZyntixAI coaching dashboard",
     },
   ],
   cta: "Your call to action",

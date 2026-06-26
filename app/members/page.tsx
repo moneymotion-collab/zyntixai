@@ -4,6 +4,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useCallback, useEffect, useMemo, useState } from "react"
 import { Trash2, UserRound } from "lucide-react"
+import { FITCORE_AI_BRAND_NAME } from "@/lib/brand/fitcore-ai"
 import ConfirmDialog from "../components/ConfirmDialog"
 import ProtectedShell from "../components/ProtectedShell"
 import Toast, { type ToastPayload } from "../components/Toast"
@@ -34,9 +35,15 @@ import {
   SAAS_PAGE_SECTION_GAP,
 } from "@/lib/ui/saas-page-layout"
 
-const fieldClass =
-  "w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-white shadow-sm outline-none transition placeholder:text-zinc-500 focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 disabled:cursor-not-allowed disabled:opacity-60"
-const labelClass = "mb-2 block text-sm font-medium text-zinc-300"
+import {
+  saasInputClass,
+  saasLabelClass,
+  saasTableClass,
+  saasTableHeadClass,
+  saasTableRowClass,
+  saasTableTdClass,
+  saasTableThClass,
+} from "@/lib/ui/saas-tokens"
 
 function memberProfileHref(memberId: string) {
   return `/members/${memberId}`
@@ -176,14 +183,14 @@ function MembersTable({
 
   return (
     <div className={`hidden overflow-hidden ${SAAS_PAGE_LIST_CARD} md:block`}>
-      <table className="w-full text-left text-sm">
-        <thead className="border-b border-white/10 bg-white/[0.03] text-zinc-400">
+      <table className={saasTableClass}>
+        <thead className={saasTableHeadClass}>
           <tr>
-            <th className="px-6 py-4 font-medium">Member</th>
-            <th className="px-6 py-4 font-medium">Email</th>
-            <th className="px-6 py-4 font-medium">Workouts</th>
-            <th className="px-6 py-4 font-medium">Status</th>
-            <th className="px-6 py-4 font-medium">Actions</th>
+            <th className={saasTableThClass}>Member</th>
+            <th className={saasTableThClass}>Email</th>
+            <th className={saasTableThClass}>Workouts</th>
+            <th className={saasTableThClass}>Status</th>
+            <th className={saasTableThClass}>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -202,10 +209,10 @@ function MembersTable({
                     openMemberProfile(router, member.id)
                   }
                 }}
-                className="group cursor-pointer border-b border-white/5 transition last:border-b-0 hover:bg-white/[0.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-cyan-500/40"
+                className={`group cursor-pointer ${saasTableRowClass}`}
                 aria-label={`View profile for ${member.full_name}`}
               >
-                <td className="px-6 py-4">
+                <td className={saasTableTdClass}>
                   <div className="flex items-center gap-3">
                     <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[0.06] text-cyan-400">
                       <UserRound className="h-4 w-4" />
@@ -218,17 +225,17 @@ function MembersTable({
                     </div>
                   </div>
                 </td>
-                <td className="px-6 py-4 text-zinc-400">{member.email}</td>
-                <td className="px-6 py-4">
+                <td className={`${saasTableTdClass} text-slate-400`}>{member.email}</td>
+                <td className={saasTableTdClass}>
                   <MemberWorkoutsDisplay
                     count={member.workout_assignments.length}
                   />
                 </td>
-                <td className="px-6 py-4">
+                <td className={saasTableTdClass}>
                   <MemberStatusBadge status={status} />
                 </td>
                 <td
-                  className="px-6 py-4"
+                  className={saasTableTdClass}
                   onClick={(event) => event.stopPropagation()}
                   onKeyDown={(event) => event.stopPropagation()}
                 >
@@ -390,7 +397,7 @@ export default function MembersPage() {
     <ProtectedShell allowed={["admin", "coach"]}>
       <main className={SAAS_PAGE_MAIN}>
         <SaasPageHeader
-          eyebrow="FitCore AI"
+          eyebrow={FITCORE_AI_BRAND_NAME}
           title="Members"
           description="Manage your gym members."
           className="mb-8"
@@ -430,7 +437,7 @@ export default function MembersPage() {
 
           <div className="grid gap-4">
             <div>
-              <label htmlFor="member-full-name" className={labelClass}>
+              <label htmlFor="member-full-name" className={saasLabelClass}>
                 Full name
               </label>
               <input
@@ -439,12 +446,12 @@ export default function MembersPage() {
                 placeholder="Full name"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
-                className={fieldClass}
+                className={saasInputClass}
               />
             </div>
 
             <div>
-              <label htmlFor="member-email" className={labelClass}>
+              <label htmlFor="member-email" className={saasLabelClass}>
                 Email address
               </label>
               <input
@@ -453,7 +460,7 @@ export default function MembersPage() {
                 placeholder="Email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className={fieldClass}
+                className={saasInputClass}
               />
             </div>
 

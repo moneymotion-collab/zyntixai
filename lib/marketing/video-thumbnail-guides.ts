@@ -55,7 +55,7 @@ export const VIDEO_STYLE_THUMBNAIL_GUIDES: Record<
     titleTone: "ROI or time-savings hook, 2-5 words",
     textTone: "Feature benefit subline",
     visualTone:
-      "Cinematic dark office with holographic dashboard glow, electric blue accents, premium FitCore AI brand",
+      "Cinematic dark office with holographic dashboard glow, electric blue accents, premium ZyntixAI brand",
     example: {
       thumbnail_title: "Save 10 Hours",
       thumbnail_text: "Automate your content",
@@ -67,12 +67,12 @@ export const VIDEO_STYLE_THUMBNAIL_GUIDES: Record<
     titleTone: "Business ROI headline, 2-5 words",
     textTone: "Platform benefit subline for coaches",
     visualTone:
-      "FitCore Coach mascot in cinematic dark commercial frame, electric blue accent glow, premium B2B fitness SaaS",
+      "Zyntix Coach mascot in cinematic dark commercial frame, electric blue accent glow, premium B2B fitness SaaS",
     example: {
       thumbnail_title: "RUN YOUR GYM",
       thumbnail_text: "One platform. Full control.",
       thumbnail_visual:
-        "FitCore Coach mascot in dark cinematic office, holographic command center glow, electric blue rim light, premium cover composition.",
+        "Zyntix Coach mascot in dark cinematic office, holographic command center glow, electric blue rim light, premium cover composition.",
     },
   },
   mascot_story: {
@@ -84,7 +84,7 @@ export const VIDEO_STYLE_THUMBNAIL_GUIDES: Record<
       thumbnail_title: "Coach Says",
       thumbnail_text: "Try this warm-up fix",
       thumbnail_visual:
-        "FitCore Coach mascot close-up, confident expression, neon blue rim light, dark gym backdrop.",
+        "Zyntix Coach mascot close-up, confident expression, neon blue rim light, dark gym backdrop.",
     },
   },
 }

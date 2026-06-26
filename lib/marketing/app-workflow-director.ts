@@ -310,7 +310,7 @@ export const CREATE_NUTRITION_PLAN_WORKFLOW: AppWorkflowDefinition = {
 
 export const SOCIAL_MEDIA_MANAGER_WORKFLOW: AppWorkflowDefinition = {
   id: "social_media_manager",
-  label: "FitCore AI Launch Campaign",
+  label: "ZyntixAI Launch Campaign",
   description: MARKETING_LAUNCH_VIDEO_SCENES.map((scene) => scene.screenName).join(
     " → ",
   ),

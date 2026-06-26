@@ -81,7 +81,7 @@ export function buildMockStoryStructure(
       if (index === 3) {
         return {
           ...scene,
-          text: `${campaignName || "FitCore"} fixes that in one place.`,
+          text: `${campaignName || "ZyntixAI"} fixes that in one place.`,
         }
       }
       return scene

@@ -13,7 +13,7 @@ export type BrandMascot = {
 }
 
 export const FITCORE_COACH_MASCOT: BrandMascot = {
-  name: "FitCore Coach",
+  name: "Zyntix Coach",
   type: "AI Business & Fitness Mentor",
   personality: ["Confident", "Motivational", "Professional", "High-performance"],
   visualStyle: "Clean modern look",

@@ -6,7 +6,7 @@ export const MOCK_CTA_LIBRARY: CtaGeneratorItem[] = [
     category: "Business Launch",
   },
   {
-    text: "Join The FitCore AI Beta",
+    text: "Join The ZyntixAI Beta",
     category: "Early Access",
   },
   {
@@ -27,7 +27,7 @@ export function buildMockCtaGenerator(
   campaignName: string,
   brandName?: string,
 ): CtaGeneratorItem[] {
-  const brand = brandName?.trim() || "FitCore AI"
+  const brand = brandName?.trim() || "ZyntixAI"
   const campaign = campaignName.trim()
 
   return MOCK_CTA_LIBRARY.map((cta) => ({
@@ -42,7 +42,7 @@ function personalizeMockCta(
   campaign: string,
 ): string {
   const replacements: Record<string, string> = {
-    "Join The FitCore AI Beta": `Join The ${brand} Beta`,
+    "Join The ZyntixAI Beta": `Join The ${brand} Beta`,
   }
 
   if (campaign && text === "Start Your Coaching Business With AI") {

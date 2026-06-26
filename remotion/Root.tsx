@@ -126,11 +126,11 @@ export const RemotionRoot = () => {
         height={REELS_HEIGHT}
         calculateMetadata={calcFitCoreTemplateMetadata}
         defaultProps={{
-          title: "FitCore AI",
-          brandName: "FitCore AI",
+          title: "ZyntixAI",
+          brandName: "ZyntixAI",
           hook: DEFAULT_SHOWCASE_SCENES[0].text,
           scenes: DEFAULT_SHOWCASE_SCENES,
-          cta: "Replace every tool. Run FitCore AI →",
+          cta: "Replace every tool. Run ZyntixAI →",
         }}
       />
       <Composition

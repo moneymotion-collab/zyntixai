@@ -1,12 +1,9 @@
 import { Suspense } from "react"
+import BrandedLoadingState from "@/components/brand/BrandedLoadingState"
 import RegisterPageClient from "./RegisterPageClient"
 
 function RegisterFallback() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-black text-gray-400">
-      Loading…
-    </div>
-  )
+  return <BrandedLoadingState message="Loading…" variant="mark" />
 }
 
 export default function RegisterPage() {

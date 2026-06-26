@@ -154,7 +154,7 @@ export function normalizeVideoSceneForInsert(
     scene.overlay_text,
     scene.text,
     scenePlan?.overlay_text,
-    "See FitCore Coach in action",
+    "See Zyntix Coach in action",
   )
   const text = firstCleanText(scene.text, overlay_text)
   const visual =
@@ -284,7 +284,7 @@ export function normalizeWorkflowProjectFields(input: {
     workflow_summary: firstCleanText(
       input.workflowSummary,
       input.fallbackWorkflowSummary,
-      "Show FitCore as an all-in-one coaching business platform.",
+      "Show ZyntixAI as an all-in-one coaching business platform.",
     ),
   }
 }

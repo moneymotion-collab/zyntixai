@@ -19,6 +19,8 @@ import {
 } from "@/lib/picked-workout-exercises"
 import { createClient } from "@/lib/supabase/client"
 import { premiumSelectClass } from "@/lib/ui/premium-input"
+import { assignWorkoutToMember } from "@/lib/workout-assignments"
+import { notifyCoachingCoreChanged } from "@/lib/coaching-core/notify"
 import {
   fetchExercisesByPlanIds,
   insertWorkoutPlanExercises,
@@ -68,6 +70,7 @@ export default function WorkoutDetailPage({
   })
   const [pageLoading, setPageLoading] = useState(true)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const [assigning, setAssigning] = useState(false)
   const [showAssign, setShowAssign] = useState(false)
   const [selectedMember, setSelectedMember] = useState("")
   const [pickerOpen, setPickerOpen] = useState(false)
@@ -338,15 +341,29 @@ export default function WorkoutDetailPage({
   const assignWorkout = async () => {
     if (!selectedMember || !workout) return
 
+    setAssigning(true)
     const supabase = createClient()
 
-    await supabase.from("member_workout_assignments").insert({
-      member_id: selectedMember,
-      workout_plan_id: workout.id,
-      assigned_at: new Date().toISOString(),
+    const result = await assignWorkoutToMember(supabase, {
+      memberId: selectedMember,
+      workoutPlanId: workout.id,
     })
 
+    setAssigning(false)
+
+    if (!result.success) {
+      setErrorMessage(result.message)
+      setToast({
+        title: "Could not assign workout",
+        description: result.message,
+        variant: "error",
+      })
+      return
+    }
+
+    setToast(successToast("workoutAssigned"))
     setShowAssign(false)
+    notifyCoachingCoreChanged()
   }
 
   if (pageLoading) {
@@ -417,10 +434,12 @@ export default function WorkoutDetailPage({
 
               <button
                 type="button"
-                onClick={assignWorkout}
-                className="bg-black text-white px-4 py-2 rounded w-full mt-3"
+                onClick={() => void assignWorkout()}
+                disabled={assigning || !selectedMember}
+                className="bg-black text-white px-4 py-2 rounded w-full mt-3 disabled:opacity-50"
+                aria-busy={assigning}
               >
-                Assign
+                {assigning ? "Assigning…" : "Assign"}
               </button>
             </div>
           )}

@@ -214,7 +214,7 @@ export default function ProductPreviewSection() {
                   <span className="h-3 w-3 rounded-full bg-emerald-500/80" />
                 </div>
                 <div className="mx-auto flex h-8 w-full max-w-md items-center justify-center rounded-lg bg-white/[0.04] px-4 text-xs text-slate-500">
-                  app.fitcore.ai/dashboard
+                  app.zyntixai.com/dashboard
                 </div>
               </div>
 
@@ -226,7 +226,7 @@ export default function ProductPreviewSection() {
                       <Dumbbell className="h-3.5 w-3.5 text-white" />
                     </div>
                     <span className="text-xs font-semibold text-white">
-                      FitCore AI
+                      ZyntixAI
                     </span>
                   </div>
                   <nav className="space-y-1">

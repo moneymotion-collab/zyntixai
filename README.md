@@ -1,4 +1,4 @@
-# FitCore AI
+# ZyntixAI
 
 Unified Next.js platform for fitness coaches: clients, workouts, nutrition, progress, marketing AI, and analytics.
 

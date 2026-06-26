@@ -3,17 +3,20 @@
 import Link from "next/link"
 import EmptyState from "@/components/ui/empty-state"
 import SectionLoadingState from "@/components/ui/section-loading-state"
+import { buildAssignWorkoutUrl } from "@/lib/coach-dashboard/coach-action-links"
 import { SAAS_EMPTY } from "@/lib/copy/saas-empty-states"
 import type { MyWorkoutAssignment } from "@/lib/types/my-workouts"
 
 type MemberAssignedWorkoutsSectionProps = {
   assignments: MyWorkoutAssignment[]
   loading?: boolean
+  memberId?: string
 }
 
 export default function MemberAssignedWorkoutsSection({
   assignments,
   loading = false,
+  memberId,
 }: MemberAssignedWorkoutsSectionProps) {
   if (loading) {
     return (
@@ -30,18 +33,41 @@ export default function MemberAssignedWorkoutsSection({
     return (
       <section className="rounded-3xl border bg-white p-6 shadow-sm">
         <h2 className="sr-only">Assigned Workouts</h2>
-        <EmptyState {...SAAS_EMPTY.workoutAssignMember} variant="light" />
+        <EmptyState
+          {...SAAS_EMPTY.workoutAssignMember}
+          variant="light"
+          action={
+            memberId ? (
+              <Link
+                href={buildAssignWorkoutUrl(memberId)}
+                className="btn-primary-solid"
+              >
+                Assign a workout plan
+              </Link>
+            ) : undefined
+          }
+        />
       </section>
     )
   }
 
   return (
     <section className="space-y-4">
-      <div>
-        <h2 className="text-2xl font-bold text-black">Assigned Workouts</h2>
-        <p className="mt-1 text-sm text-gray-500">
-          Workout plans linked via workout assignments.
-        </p>
+      <div className="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <h2 className="text-2xl font-bold text-black">Assigned Workouts</h2>
+          <p className="mt-1 text-sm text-gray-500">
+            Workout plans linked via workout assignments.
+          </p>
+        </div>
+        {memberId ? (
+          <Link
+            href={buildAssignWorkoutUrl(memberId)}
+            className="fitcore-btn-secondary !min-h-9 !px-3 !py-2 !text-xs"
+          >
+            Assign another
+          </Link>
+        ) : null}
       </div>
 
       {assignments.map((assignment) => {

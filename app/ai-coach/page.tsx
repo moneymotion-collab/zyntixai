@@ -1,6 +1,7 @@
 ﻿"use client"
 
 import { useCallback, useEffect, useRef, useState } from "react"
+import { useSearchParams } from "next/navigation"
 import {
   ArrowLeft,
   Loader2,
@@ -10,6 +11,7 @@ import {
   Sparkles,
   User,
 } from "lucide-react"
+import { FITCORE_AI_BRAND_NAME } from "@/lib/brand/fitcore-ai"
 import ProtectedShell from "../components/ProtectedShell"
 import { SAAS_EMPTY } from "@/lib/copy/saas-empty-states"
 import Toast from "../components/Toast"
@@ -27,6 +29,7 @@ import {
   premiumSelectClass,
   premiumTextareaClass,
 } from "@/lib/ui/premium-input"
+import { AI_COACH_SUGGESTED_PROMPTS } from "@/lib/ai-coach/suggested-prompts"
 
 type Member = Database["public"]["Tables"]["members"]["Row"]
 
@@ -40,6 +43,7 @@ function formatThreadTime(iso: string) {
 }
 
 export default function AiCoachPage() {
+  const searchParams = useSearchParams()
   const supabase = createClient()
   const scrollRef = useRef<HTMLDivElement>(null)
 
@@ -116,10 +120,19 @@ export default function AiCoachPage() {
   }, [fetchMembers, fetchThreads])
 
   useEffect(() => {
+    const memberParam = searchParams.get("member")
+    if (memberParam && members.some((member) => member.id === memberParam)) {
+      setSelectedMemberId(memberParam)
+      setActiveThreadId(null)
+      setMessages([])
+      setMobileShowChat(true)
+      return
+    }
+
     if (!selectedMemberId && members.length > 0) {
       setSelectedMemberId(members[0].id)
     }
-  }, [members, selectedMemberId])
+  }, [members, searchParams])
 
   useEffect(() => {
     if (activeThreadId) {
@@ -233,7 +246,7 @@ export default function AiCoachPage() {
               <div className="flex items-center justify-between gap-2">
                 <div>
                   <p className="text-xs font-medium uppercase tracking-[0.25em] text-cyan-400">
-                    FitCore AI
+                    {FITCORE_AI_BRAND_NAME}
                   </p>
                   <h1 className="text-xl font-bold text-white">AI Coach</h1>
                 </div>
@@ -371,6 +384,20 @@ export default function AiCoachPage() {
                     Workouts, nutrition, and progress are included automatically
                     as context.
                   </p>
+                  {members.length > 0 ? (
+                    <div className="mt-6 flex max-w-lg flex-wrap justify-center gap-2">
+                      {AI_COACH_SUGGESTED_PROMPTS.map((suggestion) => (
+                        <button
+                          key={suggestion}
+                          type="button"
+                          onClick={() => setPrompt(suggestion)}
+                          className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-left text-xs text-slate-300 transition hover:border-cyan-500/30 hover:bg-white/[0.08] hover:text-white"
+                        >
+                          {suggestion}
+                        </button>
+                      ))}
+                    </div>
+                  ) : null}
                 </div>
               ) : loadingMessages ? (
                 <div className="flex items-center justify-center gap-2 py-20 text-gray-400">
@@ -424,6 +451,7 @@ export default function AiCoachPage() {
               ) : null}
               <div className="flex gap-2 rounded-2xl border border-white/10 bg-[#0b1224] p-2">
                 <textarea
+                  id="ai-coach-input"
                   value={prompt}
                   onChange={(e) => setPrompt(e.target.value)}
                   onKeyDown={handleKeyDown}

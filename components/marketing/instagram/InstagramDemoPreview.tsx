@@ -453,7 +453,7 @@ function BeforeAfterSection() {
         id="before-after-heading"
         className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl"
       >
-        Before vs After FitCore AI
+        Before vs After ZyntixAI
       </h2>
       <p className="mt-2 max-w-2xl text-sm text-slate-400">
         See how coaches go from scattered posting to a system that grows their
@@ -472,7 +472,7 @@ function BeforeAfterSection() {
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-rose-300/80">
                   Before
                 </p>
-                <h3 className="text-lg font-bold text-white">Before FitCore AI</h3>
+                <h3 className="text-lg font-bold text-white">Before ZyntixAI</h3>
               </div>
             </div>
             <ul className="mt-5 space-y-3">
@@ -502,7 +502,7 @@ function BeforeAfterSection() {
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-300/80">
                   After
                 </p>
-                <h3 className="text-lg font-bold text-white">After FitCore AI</h3>
+                <h3 className="text-lg font-bold text-white">After ZyntixAI</h3>
               </div>
             </div>
             <ul className="mt-5 space-y-3">
@@ -536,7 +536,7 @@ function ContentWorkflowSection() {
         From idea to insight in five steps
       </h2>
       <p className="mt-2 max-w-2xl text-sm text-slate-400">
-        Every post flows through FitCore AI — generate, create, schedule,
+        Every post flows through ZyntixAI — generate, create, schedule,
         publish, and analyze without leaving the platform.
       </p>
 
@@ -625,10 +625,10 @@ function RealAccountSection() {
         id="real-account-heading"
         className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl"
       >
-        Real FitCore AI Account
+        Real ZyntixAI Account
       </h2>
       <p className="mt-2 max-w-2xl text-sm text-slate-400">
-        Connect your @fitcore_ai_app Instagram to display live performance data
+        Connect your @zyntixai_app Instagram to display live performance data
         alongside this demo showcase.
       </p>
 
@@ -643,7 +643,7 @@ function RealAccountSection() {
             Your real Instagram results will appear here.
           </p>
           <p className="mt-2 max-w-sm text-sm text-slate-500">
-            Link @fitcore_ai_app or your coaching account in settings to sync
+            Link @zyntixai_app or your coaching account in settings to sync
             reach, engagement, and viral scores from live posts.
           </p>
 
@@ -718,7 +718,7 @@ export default function InstagramDemoPreview({
             </h2>
             <p className="mt-2 max-w-2xl text-sm text-slate-400">
               Preview exactly what your coaching profile could look like with
-              FitCore AI — premium content, viral scores, and real performance
+              ZyntixAI — premium content, viral scores, and real performance
               metrics on every post.
             </p>
           </div>

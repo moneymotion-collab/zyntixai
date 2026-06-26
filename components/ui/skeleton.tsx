@@ -18,12 +18,18 @@ export function GlassCardSkeleton({
   children,
   className = "",
 }: {
-  children: ReactNode
+  children?: ReactNode
   className?: string
 }) {
   return (
     <div className={`glass-panel space-y-4 p-6 sm:p-8 ${className}`.trim()}>
-      {children}
+      {children ?? (
+        <>
+          <Skeleton className="h-4 w-1/3" />
+          <Skeleton className="h-8 w-2/3" />
+          <Skeleton className="h-4 w-full" />
+        </>
+      )}
     </div>
   )
 }

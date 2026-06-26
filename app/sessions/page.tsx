@@ -3,6 +3,7 @@
 import { Suspense, useCallback, useEffect, useRef, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { Loader2, Plus } from "lucide-react"
+import { FITCORE_AI_BRAND_NAME } from "@/lib/brand/fitcore-ai"
 import ProtectedShell from "../components/ProtectedShell"
 import Toast, { type ToastPayload } from "../components/Toast"
 import { successToast } from "@/lib/copy/success-toasts"
@@ -251,6 +252,14 @@ function SessionsPageContent() {
       return
     }
 
+    if (newStatus === "completed") {
+      setToast(successToast("sessionCompleted"))
+    } else if (newStatus === "cancelled") {
+      setToast(successToast("sessionCancelled"))
+    } else {
+      setToast(successToast("sessionStatusUpdated"))
+    }
+
     await fetchData()
     notifyCoachingCoreChanged()
   }
@@ -259,7 +268,7 @@ function SessionsPageContent() {
     <ProtectedShell allowed={["admin", "coach"]}>
       <main className={SAAS_PAGE_MAIN}>
         <SaasPageHeader
-          eyebrow="FitCore AI"
+          eyebrow={FITCORE_AI_BRAND_NAME}
           title="Sessions"
           description="Schedule and manage coaching sessions with your members."
           action={
@@ -295,7 +304,7 @@ function SessionsPageContent() {
         ) : null}
 
         {showForm ? (
-          <section className={`${SAAS_PAGE_CARD} mb-8`}>
+          <section id="session-form" className={`${SAAS_PAGE_CARD} mb-8 scroll-mt-24`}>
             <h2 className="mb-4 text-lg font-bold">New session</h2>
             <form
               onSubmit={(e) => {

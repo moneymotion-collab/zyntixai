@@ -10,6 +10,7 @@ import {
   Video,
 } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
+import { FITCORE_AI_BRAND_NAME } from "@/lib/brand/fitcore-ai"
 import { useIsDemoWorkspace } from "@/app/hooks/useIsDemoWorkspace"
 import {
   COACH_DASHBOARD_GRID_GAP,
@@ -51,7 +52,7 @@ export default function DemoCoachProfileSummary() {
       <DashboardSectionHeader
         eyebrow="Demo coach profile"
         title={DEMO_COACH_PROFILE_NAME}
-        description="A fully loaded FitCore AI coaching business — explore members, plans, marketing, and video campaigns."
+        description={`A fully loaded ${FITCORE_AI_BRAND_NAME} coaching business — explore members, plans, marketing, and video campaigns.`}
         badge={
           <span className="badge-premium">
             <Sparkles className="h-3 w-3 text-cyan-300" aria-hidden />

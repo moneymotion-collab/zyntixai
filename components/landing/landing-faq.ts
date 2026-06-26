@@ -6,26 +6,26 @@ export type LandingFaqItem = {
 
 export const LANDING_FAQ_ITEMS: readonly LandingFaqItem[] = [
   {
-    id: "what-is-fitcore-ai",
-    question: "What is FitCore AI?",
+    id: "what-is-zyntixai",
+    question: "What is ZyntixAI?",
     answer:
-      "FitCore AI is an all-in-one coaching platform that helps fitness professionals manage clients, build workouts and nutrition plans, track progress, and grow their business with AI-powered marketing tools — from a single dashboard.",
+      "ZyntixAI is an all-in-one coaching platform that helps fitness professionals manage clients, build workouts and nutrition plans, track progress, and grow their business with AI-powered marketing tools — from a single dashboard.",
   },
   {
     id: "who-is-it-for",
-    question: "Who is FitCore AI for?",
+    question: "Who is ZyntixAI for?",
     answer:
-      "FitCore AI is built for personal trainers, online coaches, gym owners, and growing fitness businesses that want to run client delivery and marketing without juggling multiple apps.",
+      "ZyntixAI is built for personal trainers, online coaches, gym owners, and growing fitness businesses that want to run client delivery and marketing without juggling multiple apps.",
   },
   {
     id: "workout-programming",
-    question: "Does FitCore AI include workout programming?",
+    question: "Does ZyntixAI include workout programming?",
     answer:
       "Yes. You can build and assign training plans, use workout templates, and work with a full exercise library including custom exercises, search, filters, and exercise instructions.",
   },
   {
     id: "nutrition-planning",
-    question: "Does FitCore AI include nutrition planning?",
+    question: "Does ZyntixAI include nutrition planning?",
     answer:
       "Yes. Create and assign nutrition plans for clients, manage meal guidance, and keep nutrition coaching alongside workouts and progress in one workflow.",
   },
@@ -37,7 +37,7 @@ export const LANDING_FAQ_ITEMS: readonly LandingFaqItem[] = [
   },
   {
     id: "marketing-ai",
-    question: "Does FitCore AI include Marketing AI?",
+    question: "Does ZyntixAI include Marketing AI?",
     answer:
       "Yes. Marketing AI helps you generate content ideas, plan your calendar, analyze performance, and create video content. It is included on the Pro plan and above.",
   },
@@ -45,7 +45,7 @@ export const LANDING_FAQ_ITEMS: readonly LandingFaqItem[] = [
     id: "instagram-publishing",
     question: "Can I publish content to Instagram?",
     answer:
-      "Yes. FitCore AI supports Instagram publishing as part of the marketing workflow — draft content, schedule posts, and track results from your marketing dashboard.",
+      "Yes. ZyntixAI supports Instagram publishing as part of the marketing workflow — draft content, schedule posts, and track results from your marketing dashboard.",
   },
   {
     id: "credit-card",
@@ -73,8 +73,8 @@ export const LANDING_FAQ_ITEMS: readonly LandingFaqItem[] = [
   },
   {
     id: "online-coaches-gyms",
-    question: "Is FitCore AI suitable for online coaches and gyms?",
+    question: "Is ZyntixAI suitable for online coaches and gyms?",
     answer:
-      "Absolutely. Online coaches use FitCore AI to deliver remote programming, nutrition, and check-ins at scale. Gym owners and multi-coach teams can use the Agency plan for team management and shared workflows.",
+      "Absolutely. Online coaches use ZyntixAI to deliver remote programming, nutrition, and check-ins at scale. Gym owners and multi-coach teams can use the Agency plan for team management and shared workflows.",
   },
 ] as const

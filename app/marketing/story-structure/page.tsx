@@ -217,7 +217,7 @@ export default function StoryStructurePage() {
                     id="story-campaign-name"
                     value={campaignName}
                     onChange={(event) => setCampaignName(event.target.value)}
-                    placeholder="FitCore Coach"
+                    placeholder="Zyntix Coach"
                     disabled={generating}
                   />
                 </div>

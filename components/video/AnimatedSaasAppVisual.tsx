@@ -927,7 +927,7 @@ function Sidebar({
           }}
         />
         <span style={{ fontSize: 13, fontWeight: 800, color: "#fff", fontFamily: FONT }}>
-          FitCore AI
+          ZyntixAI
         </span>
       </div>
       {SIDEBAR_ITEMS.map((item, i) => {
@@ -1055,7 +1055,7 @@ export default function AnimatedSaasAppVisual({
   sceneText,
   visualDescription = "",
   sceneIndex = 0,
-  brandLabel = "FitCore AI",
+  brandLabel = "ZyntixAI",
   imageUrl,
   module,
   forceVariant,

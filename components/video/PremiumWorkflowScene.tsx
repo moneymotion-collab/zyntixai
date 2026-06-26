@@ -200,7 +200,7 @@ export function PremiumWorkflowScene({
   const layout = parseSceneLayoutStyle(layoutStyle);
   const background = getLayoutBackgroundGradient(layout, sceneIndex);
   const resolvedAssetKey = assetKey?.trim() || assetKeyFromUrl(assetUrl);
-  const browserUrl = `app.fitcorecoach.com/${resolvedAssetKey}`;
+  const browserUrl = `app.zyntixai.com/${resolvedAssetKey}`;
 
   const layer = deriveSceneVisualLayer(
     {

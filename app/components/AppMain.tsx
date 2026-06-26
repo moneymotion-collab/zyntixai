@@ -2,6 +2,7 @@
 
 import { AnimatePresence } from "framer-motion"
 import { usePathname } from "next/navigation"
+import PlatformAssistantShell from "@/components/platform-assistant/PlatformAssistantShell"
 import DemoModeIndicatorHost from "@/components/workspace/DemoModeIndicatorHost"
 import DemoProductTourHost from "@/components/tour/DemoProductTourHost"
 import PageTransition from "@/components/ui/page-transition"
@@ -21,17 +22,19 @@ export default function AppMain({ children }: { children: React.ReactNode }) {
         }
       >
         {showWorkspaceChrome ? <DemoModeIndicatorHost /> : null}
-        <AnimatePresence mode="wait" initial={false}>
-          {shouldAnimate ? (
-            <PageTransition key={pathname} routeKey={pathname}>
-              {children}
-            </PageTransition>
-          ) : (
-            <div key={pathname} className="min-w-0">
-              {children}
-            </div>
-          )}
-        </AnimatePresence>
+        <PlatformAssistantShell showChrome={showWorkspaceChrome}>
+          <AnimatePresence mode="wait" initial={false}>
+            {shouldAnimate ? (
+              <PageTransition key={pathname} routeKey={pathname}>
+                {children}
+              </PageTransition>
+            ) : (
+              <div key={pathname} className="min-w-0">
+                {children}
+              </div>
+            )}
+          </AnimatePresence>
+        </PlatformAssistantShell>
       </div>
       {showWorkspaceChrome ? <DemoProductTourHost /> : null}
     </main>

@@ -1,6 +1,6 @@
 import { DEMO_MEMBER_COUNT } from "@/lib/demo/demo-copy"
 
-export const DEMO_COACH_PROFILE_NAME = "FitCore Performance Coaching"
+export const DEMO_COACH_PROFILE_NAME = "ZyntixAI Performance Coaching"
 
 export type DemoCoachProfileStat = {
   label: string

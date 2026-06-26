@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { useCallback, useEffect, useMemo, useState } from "react"
+import { useSearchParams } from "next/navigation"
 import AssignWorkoutModal from "../components/AssignWorkoutModal"
 import EditWorkoutPlanModal from "../components/EditWorkoutPlanModal"
 import ProtectedShell from "../components/ProtectedShell"
@@ -50,6 +51,7 @@ type Member = Database["public"]["Tables"]["members"]["Row"]
 type ToastState = ToastPayload & { variant: "success" | "error" }
 
 export default function WorkoutsPage() {
+  const searchParams = useSearchParams()
   const supabase = createClient()
   const [workoutPlans, setWorkoutPlans] = useState<WorkoutPlan[]>([])
   const [members, setMembers] = useState<Member[]>([])
@@ -126,6 +128,20 @@ export default function WorkoutsPage() {
     })
   }, [])
 
+  const assignMemberParam = searchParams.get("assignMember")
+
+  useEffect(() => {
+    if (!assignMemberParam || members.length === 0 || pageLoading) return
+    if (!members.some((member) => member.id === assignMemberParam)) return
+
+    setModalMemberId(assignMemberParam)
+    setToast({
+      title: "Ready to assign",
+      description: "Choose a workout plan and click Assign — member is pre-selected.",
+      variant: "success",
+    })
+  }, [assignMemberParam, members, pageLoading])
+
   const plansByMember = useMemo(() => {
     const map = new Map<string, CoachWorkoutAssignment[]>()
 
@@ -154,9 +170,9 @@ export default function WorkoutsPage() {
     return map
   }, [assignments])
 
-  const openAssignModal = (plan: WorkoutPlan) => {
+  const openAssignModal = (plan: WorkoutPlan, preselectedMemberId?: string) => {
     setAssignModalPlan(plan)
-    setModalMemberId("")
+    setModalMemberId(preselectedMemberId ?? modalMemberId)
     setModalError(null)
   }
 
@@ -460,7 +476,12 @@ export default function WorkoutsPage() {
                       </Button>
                       <button
                         type="button"
-                        onClick={() => openAssignModal(plan)}
+                        onClick={() =>
+                          openAssignModal(
+                            plan,
+                            assignMemberParam ?? (modalMemberId || undefined),
+                          )
+                        }
                         className={`${SAAS_BTN_SECONDARY} flex-1 px-4 py-2`}
                       >
                         Assign Workout

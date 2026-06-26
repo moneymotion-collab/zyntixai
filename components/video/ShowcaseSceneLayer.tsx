@@ -284,7 +284,7 @@ export default function ShowcaseSceneLayer({
   );
 
   const background = getLayoutBackgroundGradient(layer.layout_style, sceneIndex);
-  const browserUrl = `app.fitcorecoach.com/${asset_key ?? workflow_step ?? "dashboard"}`;
+  const browserUrl = `app.zyntixai.com/${asset_key ?? workflow_step ?? "dashboard"}`;
   const isSplitStory = layer.layout_style === "split_story";
 
   const zoom = interpolate(

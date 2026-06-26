@@ -345,7 +345,7 @@ export function buildVisualLayerDirectorRules(): string {
 
 Composition rules (never violate):
 - Never show raw full-page screenshots without a device/browser frame, gradient backdrop, headline overlay, and UI highlight
-- Wrap every screenshot in premium browser chrome with app.fitcorecoach.com URL bar
+- Wrap every screenshot in premium browser chrome with app.zyntixai.com URL bar
 - Add overlay headline text (overlay_text) on a gradient scrim or split-story band
 - Add subtle indigo gradient background behind the framed UI
 - Highlight the important UI area with a pulsing cyan focus ring

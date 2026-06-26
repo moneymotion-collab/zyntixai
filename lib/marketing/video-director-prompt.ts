@@ -80,11 +80,11 @@ export const VIDEO_DIRECTOR_JSON_SCHEMA = `{
   "style": "viral_caption",
   "thumbnail_title": "Stop Wasting Hours",
   "thumbnail_text": "Create content in minutes",
-  "thumbnail_visual": "FitCore Coach overwhelmed with multiple apps open, bold text overlay, high contrast.",
+  "thumbnail_visual": "Zyntix Coach overwhelmed with multiple apps open, bold text overlay, high contrast.",
   "scenes": [
     {
       "text": "Stop wasting hours creating content.",
-      "visual": "FitCore Coach overwhelmed with multiple apps open.",
+      "visual": "Zyntix Coach overwhelmed with multiple apps open.",
       "image_prompt": "Cinematic medium shot of a tired fitness coach working late behind a laptop in a dim modern gym office, warm desk lamp and cool blue screen glow, shallow depth of field, premium commercial photography, vertical 9:16",
       "camera_motion": "slow zoom in",
       "transition": "motion blur",
@@ -102,7 +102,7 @@ export const VIDEO_DIRECTOR_MASCOT_JSON_SCHEMA = `{
   "style": "mascot_story",
   "thumbnail_title": "Stop Wasting Hours",
   "thumbnail_text": "Create content in minutes",
-  "thumbnail_visual": "FitCore Coach mascot front and center, neon blue glow, scroll-stopping cover frame.",
+  "thumbnail_visual": "Zyntix Coach mascot front and center, neon blue glow, scroll-stopping cover frame.",
   "mascot": {
     "name": "",
     "description": "",
@@ -112,7 +112,7 @@ export const VIDEO_DIRECTOR_MASCOT_JSON_SCHEMA = `{
   "scenes": [
     {
       "text": "Stop wasting hours creating content.",
-      "visual": "FitCore Coach mascot points at a cluttered coaching dashboard.",
+      "visual": "Zyntix Coach mascot points at a cluttered coaching dashboard.",
       "image_prompt": "Cinematic medium shot of a tired fitness coach working late behind a laptop in a dim modern gym office, warm desk lamp and cool blue screen glow, shallow depth of field, premium commercial photography, vertical 9:16",
       "camera_motion": "tracking follow",
       "transition": "motion blur",
@@ -138,7 +138,7 @@ function buildMascotJsonSchemaExample(overrides?: MascotFieldOverrides): string 
       thumbnail_title: "Stop Wasting Hours",
       thumbnail_text: "Create content in minutes",
       thumbnail_visual:
-        "FitCore Coach mascot front and center, neon blue glow, scroll-stopping cover frame.",
+        "Zyntix Coach mascot front and center, neon blue glow, scroll-stopping cover frame.",
       mascot: {
         name: read("Mascot name: "),
         description: read("Mascot description: "),
@@ -148,7 +148,7 @@ function buildMascotJsonSchemaExample(overrides?: MascotFieldOverrides): string 
       scenes: [
         {
           text: "Stop wasting hours creating content.",
-          visual: "FitCore Coach mascot points at a cluttered coaching dashboard.",
+          visual: "Zyntix Coach mascot points at a cluttered coaching dashboard.",
           image_prompt: SCENE_IMAGE_PROMPT_EXAMPLE,
           camera_motion: "tracking follow",
           transition: "motion blur",
@@ -185,7 +185,7 @@ function buildSaasDemoWorkflowSystemPrompt(
 
   const workflowBlock = buildWorkflowIntelligenceDirectorBlock(workflow, goal)
 
-  return `You are the App Workflow Director — a premium SaaS demo commercial director for FitCore Coach.
+  return `You are the App Workflow Director — a premium SaaS demo commercial director for Zyntix Coach.
 
 ${buildFitCoreVisualIdentityDirectorBlock()}
 
@@ -318,7 +318,7 @@ Style output rules:
 - problem_solution: problem beat → tension beat → solution beat. No mascot field.
 - premium_ad: cinematic visuals, minimal copy, luxury pacing. No mascot field.
 - saas_demo: dashboard/UI mockups, feature callouts, workflow demo framing. No mascot field.
-- app_showcase: EXACTLY 7-scene FitCore Coach SaaS platform demo. MUST include mascot. Fixed module workflow: Dashboard → Members → Workouts → Nutrition → Sessions → Marketing AI → Analytics. Use this brand mascot:
+- app_showcase: EXACTLY 7-scene Zyntix Coach SaaS platform demo. MUST include mascot. Fixed module workflow: Dashboard → Members → Workouts → Nutrition → Sessions → Marketing AI → Analytics. Use this brand mascot:
 ${mascotBlock}
 - mascot_story: character-led narrative. MUST include mascot object. Use this brand mascot:
 ${mascotBlock}

@@ -70,7 +70,7 @@ export function applyFitCoreBrandVisualIdentity(
   if (!trimmed) return buildFitCoreBrandedScenePrompt({ sceneDirection: "" }, context)
 
   const lower = trimmed.toLowerCase()
-  if (lower.includes("fitcore") && lower.includes("electric blue")) {
+  if (lower.includes("zyntix") && lower.includes("electric blue")) {
     return trimmed
   }
 
@@ -142,7 +142,7 @@ export function buildFitCoreVisualIdentityDirectorBlock(): string {
     "\n",
   )
 
-  return `FITCORE AI VISUAL IDENTITY (apply to EVERY scene, thumbnail, and image_prompt):
+  return `ZYNTIXAI VISUAL IDENTITY (apply to EVERY scene, thumbnail, and image_prompt):
 
 Brand: ${FITCORE_VISUAL_IDENTITY.brandName} (${FITCORE_VISUAL_IDENTITY.productName})
 Signature: ${BRAND_SIGNATURE}

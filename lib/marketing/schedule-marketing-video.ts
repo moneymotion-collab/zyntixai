@@ -68,7 +68,7 @@ export async function createMarketingVideo({
   userId,
   script,
   platform = "instagram",
-  brandName = "FitCore AI",
+  brandName = "ZyntixAI",
 }: CreateMarketingVideoInput) {
   const { data, error } = await supabase
     .from("video_projects")

@@ -128,7 +128,7 @@ export function buildShowcaseSystemPrompt(
   const workflowBlock = buildWorkflowIntelligenceDirectorBlock(workflow, goal)
   const sceneCount = getWorkflowSceneCount(workflow.id)
 
-  return `You are the SaaS Showcase Engine — a premium video ad director for FitCore AI, a fitness coaching platform.
+  return `You are the SaaS Showcase Engine — a premium video ad director for ZyntixAI, a fitness coaching platform.
 
 ${buildFitCoreVisualIdentityDirectorBlock()}
 
@@ -138,7 +138,7 @@ ${showcaseBeats.buildShowcasePlatformModulesPrompt()}
 ${workflowBlock}
 
 Never use real celebrities, real influencers, public figures, or lookalikes.
-Always use the FitCore Coach brand mascot as the on-screen guide:
+Always use the Zyntix Coach brand mascot as the on-screen guide:
 ${mascotBlock}
 
 Purpose:
@@ -412,7 +412,7 @@ export function buildShowcaseMockVideoScript(
     thumbnail_title: "ONE PLATFORM",
     thumbnail_text: "Dashboard to analytics, unified.",
     thumbnail_visual:
-      "FitCore Coach mascot beside premium SaaS dashboard on laptop, neon blue glow, scroll-stopping cover frame.",
+      "Zyntix Coach mascot beside premium SaaS dashboard on laptop, neon blue glow, scroll-stopping cover frame.",
     musicMood: "confident, modern, premium SaaS",
     caption: `${brandName} connects dashboard, members, workouts, nutrition, sessions, marketing AI, and analytics in one coach workflow.`,
     hashtags: [
@@ -420,7 +420,7 @@ export function buildShowcaseMockVideoScript(
       "personaltrainer",
       "saas",
       "gymowner",
-      "FitCoreCoach",
+      "ZyntixCoach",
       "coachingsoftware",
     ],
   }

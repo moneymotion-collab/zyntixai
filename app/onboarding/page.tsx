@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import { FitCoreLogoMark } from "@/components/brand/FitCoreLogo"
+import BrandedLoadingState from "@/components/brand/BrandedLoadingState"
+import { ZyntixLogoFull } from "@/components/brand/FitCoreLogo"
 import { FITCORE_AI_BRAND_NAME } from "@/lib/brand/fitcore-ai"
 import { hasCompletedCoachOnboarding, markCoachOnboardingComplete } from "@/lib/auth/coach-onboarding"
 import { saveCoachGymName } from "@/lib/auth/save-coach-gym"
@@ -198,9 +199,7 @@ export default function OnboardingPage() {
 
   if (checkingExisting) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-black text-gray-400">
-        Loading setup…
-      </div>
+      <BrandedLoadingState message="Loading setup…" variant="mark" />
     )
   }
 
@@ -211,11 +210,8 @@ export default function OnboardingPage() {
 
       <div className="relative z-10 w-full max-w-md rounded-3xl border border-white/10 bg-white/5 p-8 shadow-2xl backdrop-blur-2xl">
         <div className="mb-8 flex flex-col items-center">
-          <FitCoreLogoMark size="lg" className="mb-4 shadow-lg shadow-cyan-500/10" />
-          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-cyan-400/90">
-            {FITCORE_AI_BRAND_NAME}
-          </p>
-          <h1 className="mt-2 text-3xl font-bold tracking-tight">Setup</h1>
+          <ZyntixLogoFull size="md" className="mb-4" />
+          <h1 className="text-3xl font-bold tracking-tight">Setup</h1>
           <p className="mt-2 text-center text-gray-400">
             Step {step} of 2 · {FITCORE_AI_BRAND_NAME}
           </p>

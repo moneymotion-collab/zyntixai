@@ -56,7 +56,7 @@ export default function LandingHeader() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:gap-4 sm:px-6 sm:py-4">
-        <FitCoreLogo size="sm" showWordmark href="/" wordmarkClassName="text-sm sm:text-base" />
+        <FitCoreLogo size="sm" variant="full" href="/" />
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Main">
           {NAV_LINKS.map((link) => (
