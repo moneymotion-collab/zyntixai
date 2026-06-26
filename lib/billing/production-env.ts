@@ -2,6 +2,12 @@
  * Required environment variables for production deploy (billing, cron, Supabase admin).
  * Keep in sync with scripts/check-production-env.mjs
  */
+export const CORE_PRODUCTION_ENV_VARS = [
+  "NEXT_PUBLIC_URL",
+  "SUPABASE_SERVICE_ROLE_KEY",
+  "CRON_SECRET",
+] as const
+
 export const STRIPE_PRODUCTION_ENV_VARS = [
   "STRIPE_SECRET_KEY",
   "STRIPE_WEBHOOK_SECRET",
@@ -10,67 +16,58 @@ export const STRIPE_PRODUCTION_ENV_VARS = [
   "STRIPE_PRICE_BUSINESS",
 ] as const
 
-export const CORE_PRODUCTION_ENV_VARS = [
-  "NEXT_PUBLIC_URL",
-  "SUPABASE_SERVICE_ROLE_KEY",
-  "CRON_SECRET",
-] as const
-
-/** @deprecated Use getRequiredProductionEnvVars() — list depends on billing mode */
+/** @deprecated Use getRequiredProductionEnvVars() — Stripe vars are optional unless BILLING_ENABLED=1 */
 export const BILLING_PRODUCTION_ENV_VARS = [
   ...STRIPE_PRODUCTION_ENV_VARS,
   ...CORE_PRODUCTION_ENV_VARS,
 ] as const
 
-export type StripeProductionEnvVar = (typeof STRIPE_PRODUCTION_ENV_VARS)[number]
-export type CoreProductionEnvVar = (typeof CORE_PRODUCTION_ENV_VARS)[number]
 export type BillingProductionEnvVar =
-  | StripeProductionEnvVar
-  | CoreProductionEnvVar
-
-export function isBillingEnabled(
-  env: NodeJS.ProcessEnv = process.env,
-): boolean {
-  const flag = env.BILLING_ENABLED?.trim().toLowerCase()
-  if (flag === "0" || flag === "false") return false
-  if (flag === "1" || flag === "true") return true
-  return Boolean(env.STRIPE_SECRET_KEY?.trim())
-}
-
-export function getRequiredProductionEnvVars(
-  env: NodeJS.ProcessEnv = process.env,
-): BillingProductionEnvVar[] {
-  if (isBillingEnabled(env)) {
-    return [...STRIPE_PRODUCTION_ENV_VARS, ...CORE_PRODUCTION_ENV_VARS]
-  }
-  return [...CORE_PRODUCTION_ENV_VARS]
-}
+  (typeof BILLING_PRODUCTION_ENV_VARS)[number]
 
 export type BillingProductionEnvCheck = {
   ok: boolean
   missing: BillingProductionEnvVar[]
+  billingEnabled: boolean
+}
+
+export function isBillingEnabled(
+  env: NodeJS.ProcessEnv = process.env,
+): boolean {
+  const value = env.BILLING_ENABLED?.trim().toLowerCase()
+  return value === "1" || value === "true" || value === "yes"
+}
+
+export function getRequiredProductionEnvVars(
+  env: NodeJS.ProcessEnv = process.env,
+): readonly BillingProductionEnvVar[] {
+  if (isBillingEnabled(env)) {
+    return BILLING_PRODUCTION_ENV_VARS
+  }
+  return CORE_PRODUCTION_ENV_VARS
 }
 
 export function checkBillingProductionEnv(
   env: NodeJS.ProcessEnv = process.env,
 ): BillingProductionEnvCheck {
   const required = getRequiredProductionEnvVars(env)
-  const missing = required.filter((key) => !env[key]?.trim())
+  const missing = required.filter((key) => !env[key]?.trim()) as BillingProductionEnvVar[]
 
   return {
     ok: missing.length === 0,
     missing,
+    billingEnabled: isBillingEnabled(env),
   }
 }
 
 export function formatBillingProductionEnvReport(
   result: BillingProductionEnvCheck = checkBillingProductionEnv(),
 ): string {
+  const required = getRequiredProductionEnvVars()
   if (result.ok) {
-    const required = getRequiredProductionEnvVars()
-    const billingNote = isBillingEnabled()
+    const billingNote = result.billingEnabled
       ? " (billing enabled)"
-      : " (billing disabled — Stripe vars not required)"
+      : " (billing disabled — set BILLING_ENABLED=1 when Stripe is ready)"
     return `All ${required.length} required production environment variables are set${billingNote}.`
   }
 
@@ -78,7 +75,9 @@ export function formatBillingProductionEnvReport(
     `Missing ${result.missing.length} required production environment variable(s):`,
     ...result.missing.map((key) => `  - ${key}`),
     "",
-    "Set these in your hosting provider (e.g. Vercel) or .env.local before running launch:check.",
+    result.billingEnabled
+      ? "Set these in your hosting provider (e.g. Vercel) or .env.local before running launch:check."
+      : "Stripe vars are skipped while BILLING_ENABLED is off. Set BILLING_ENABLED=1 when you add Stripe.",
   ]
 
   return lines.join("\n")

@@ -6,7 +6,7 @@ import {
 import { isTrialEnded } from "@/lib/coach-trial"
 import type { Database } from "@/lib/database.types"
 import { COACH_STATUS } from "@/lib/coach-status"
-import { SUBSCRIPTION_STATUS } from "@/lib/subscription"
+import { SUBSCRIPTION_STATUS } from "@/lib/subscription/types"
 
 type ProfileUpdate = Database["public"]["Tables"]["profiles"]["Update"]
 

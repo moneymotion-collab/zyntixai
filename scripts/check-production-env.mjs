@@ -2,10 +2,16 @@
  * CLI check for required production environment variables.
  * Run: npm run env:check
  *
- * Keep in sync with lib/billing/production-env.ts
+ * Keep PRODUCTION_ENV_VARS in sync with lib/billing/production-env.ts
  */
 import { readFileSync } from "node:fs"
 import { resolve } from "node:path"
+
+const CORE_PRODUCTION_ENV_VARS = [
+  "NEXT_PUBLIC_URL",
+  "SUPABASE_SERVICE_ROLE_KEY",
+  "CRON_SECRET",
+]
 
 const STRIPE_PRODUCTION_ENV_VARS = [
   "STRIPE_SECRET_KEY",
@@ -15,11 +21,17 @@ const STRIPE_PRODUCTION_ENV_VARS = [
   "STRIPE_PRICE_BUSINESS",
 ]
 
-const CORE_PRODUCTION_ENV_VARS = [
-  "NEXT_PUBLIC_URL",
-  "SUPABASE_SERVICE_ROLE_KEY",
-  "CRON_SECRET",
-]
+function isBillingEnabled(env = process.env) {
+  const value = env.BILLING_ENABLED?.trim().toLowerCase()
+  return value === "1" || value === "true" || value === "yes"
+}
+
+function getRequiredProductionEnvVars(env = process.env) {
+  if (isBillingEnabled(env)) {
+    return [...STRIPE_PRODUCTION_ENV_VARS, ...CORE_PRODUCTION_ENV_VARS]
+  }
+  return CORE_PRODUCTION_ENV_VARS
+}
 
 function loadEnvFile(filePath) {
   try {
@@ -47,39 +59,32 @@ function loadEnvFile(filePath) {
 loadEnvFile(resolve(process.cwd(), ".env.local"))
 loadEnvFile(resolve(process.cwd(), ".env"))
 
-function isBillingEnabled(env = process.env) {
-  const flag = env.BILLING_ENABLED?.trim().toLowerCase()
-  if (flag === "0" || flag === "false") return false
-  if (flag === "1" || flag === "true") return true
-  return Boolean(env.STRIPE_SECRET_KEY?.trim())
-}
-
-function getRequiredProductionEnvVars(env = process.env) {
-  if (isBillingEnabled(env)) {
-    return [...STRIPE_PRODUCTION_ENV_VARS, ...CORE_PRODUCTION_ENV_VARS]
-  }
-  return [...CORE_PRODUCTION_ENV_VARS]
-}
-
 function checkProductionEnv(env = process.env) {
   const required = getRequiredProductionEnvVars(env)
   const missing = required.filter((key) => !env[key]?.trim())
-  return { ok: missing.length === 0, missing, required }
+  return {
+    ok: missing.length === 0,
+    missing,
+    billingEnabled: isBillingEnabled(env),
+  }
 }
 
 function formatReport(result) {
+  const required = getRequiredProductionEnvVars()
   if (result.ok) {
-    const billingNote = isBillingEnabled()
+    const billingNote = result.billingEnabled
       ? " (billing enabled)"
-      : " (billing disabled — Stripe vars not required)"
-    return `All ${result.required.length} required production environment variables are set${billingNote}.`
+      : " (billing disabled — set BILLING_ENABLED=1 when Stripe is ready)"
+    return `All ${required.length} required production environment variables are set${billingNote}.`
   }
 
   return [
     `Missing ${result.missing.length} required production environment variable(s):`,
     ...result.missing.map((key) => `  - ${key}`),
     "",
-    "Set these in your hosting provider or .env.local before deploy.",
+    result.billingEnabled
+      ? "Set these in your hosting provider or .env.local before deploy."
+      : "Stripe vars are skipped while BILLING_ENABLED is off. Set BILLING_ENABLED=1 when you add Stripe.",
     "See docs/LAUNCH_CHECK.md for the full list and CI setup.",
   ].join("\n")
 }

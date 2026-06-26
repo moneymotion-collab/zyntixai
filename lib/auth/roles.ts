@@ -1,18 +1,8 @@
 import type { UserRole } from "@/lib/types/roles"
 import { USER_ROLES } from "@/lib/types/roles"
+import { normalizeRole } from "@/lib/auth/normalize-role"
 
-const LEGACY_ROLE_MAP: Record<string, UserRole> = {
-  admin: "admin",
-  coach: "coach",
-  member: "member",
-  trainer: "coach",
-  client: "member",
-}
-
-export function normalizeRole(role: string | null | undefined): UserRole | null {
-  if (!role) return null
-  return LEGACY_ROLE_MAP[role] ?? null
-}
+export { normalizeRole }
 
 export function isUserRole(value: string): value is UserRole {
   return USER_ROLES.includes(value as UserRole)

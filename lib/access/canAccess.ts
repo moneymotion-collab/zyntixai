@@ -1,11 +1,12 @@
-import { canAccessWithSubscription } from "@/lib/subscription"
-import type { Database } from "@/lib/database.types"
+import { canAccessWithSubscription } from "@/lib/subscription/resolve"
 import { COACH_STATUS } from "@/lib/coach-status"
 
-export type AccessProfile = Pick<
-  Database["public"]["Tables"]["profiles"]["Row"],
-  "role" | "coach_status" | "subscription_status" | "trial_ends_at"
->
+export type AccessProfile = {
+  role: string
+  coach_status: string | null
+  subscription_status: string | null
+  trial_ends_at: string | null
+}
 
 export function canAccess(profile: AccessProfile | null | undefined): boolean {
   return canAccessWithSubscription(profile)
