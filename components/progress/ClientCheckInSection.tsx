@@ -53,6 +53,7 @@ import {
   insertClientCheckin,
   type ClientCheckInRow,
 } from "@/lib/progress/client-checkins"
+import { useCoachingCoreChanged } from "@/app/hooks/useCoachingCoreChanged"
 import { notifyCoachingCoreChanged } from "@/lib/coaching-core/notify"
 import { createClient } from "@/lib/supabase/client"
 
@@ -248,6 +249,10 @@ export default function ClientCheckInSection({
   useEffect(() => {
     void refreshDashboard()
   }, [refreshDashboard])
+
+  useCoachingCoreChanged(() => {
+    void refreshDashboard()
+  })
 
   useEffect(() => {
     const memberParam = searchParams.get("member")
