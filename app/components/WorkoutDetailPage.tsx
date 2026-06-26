@@ -237,62 +237,60 @@ export default function WorkoutDetailPage({
     void fetchExerciseCatalog()
   }, [supabase])
 
+  const fetchCompletions = useCallback(async () => {
+    const { data } = await supabase
+      .from("workout_completions")
+      .select("id, workout_plan_id, member_id, completed_at, members ( full_name, email )")
+      .eq("workout_plan_id", workoutPlanId)
+      .order("completed_at", { ascending: false })
+
+    setCompletions(data ?? [])
+  }, [supabase, workoutPlanId])
+
   useEffect(() => {
-    const fetchCompletions = async () => {
-      const { data } = await supabase
-        .from("workout_completions")
-        .select("id, workout_plan_id, member_id, completed_at, members ( full_name, email )")
-        .eq("workout_plan_id", workoutPlanId)
-        .order("completed_at", { ascending: false })
-
-      setCompletions(data ?? [])
-    }
-
     void fetchCompletions()
+  }, [fetchCompletions])
+
+  const fetchPerformance = useCallback(async () => {
+    const { count: totalMembers } = await supabase
+      .from("members")
+      .select("*", {
+        count: "exact",
+        head: true,
+      })
+
+    const { count: assignedWorkouts } = await supabase
+      .from("member_workout_assignments")
+      .select("*", {
+        count: "exact",
+        head: true,
+      })
+      .eq("workout_plan_id", workoutPlanId)
+
+    const { count: completedWorkouts } = await supabase
+      .from("workout_completions")
+      .select("*", {
+        count: "exact",
+        head: true,
+      })
+      .eq("workout_plan_id", workoutPlanId)
+
+    const completionRate =
+      assignedWorkouts && assignedWorkouts > 0
+        ? Math.round(((completedWorkouts || 0) / assignedWorkouts) * 100)
+        : 0
+
+    setPerformance({
+      activeMembers: totalMembers || 0,
+      completionRate,
+      weeklyCompletions: completedWorkouts || 0,
+      assignedWorkouts: assignedWorkouts || 0,
+    })
   }, [supabase, workoutPlanId])
 
   useEffect(() => {
-    const fetchPerformance = async () => {
-      const { count: totalMembers } = await supabase
-        .from("members")
-        .select("*", {
-          count: "exact",
-          head: true,
-        })
-
-      const { count: assignedWorkouts } = await supabase
-        .from("member_workout_assignments")
-        .select("*", {
-          count: "exact",
-          head: true,
-        })
-        .eq("workout_plan_id", workoutPlanId)
-
-      const { count: completedWorkouts } = await supabase
-        .from("workout_completions")
-        .select("*", {
-          count: "exact",
-          head: true,
-        })
-        .eq("workout_plan_id", workoutPlanId)
-
-      const completionRate =
-        assignedWorkouts && assignedWorkouts > 0
-          ? Math.round(
-              ((completedWorkouts || 0) / assignedWorkouts) * 100,
-            )
-          : 0
-
-      setPerformance({
-        activeMembers: totalMembers || 0,
-        completionRate,
-        weeklyCompletions: completedWorkouts || 0,
-        assignedWorkouts: assignedWorkouts || 0,
-      })
-    }
-
     void fetchPerformance()
-  }, [supabase, workoutPlanId])
+  }, [fetchPerformance])
 
   const pickerInitialExercises = useMemo(
     () => planExerciseRows.map(mapPlanRowToPicked),
@@ -364,6 +362,7 @@ export default function WorkoutDetailPage({
     setToast(successToast("workoutAssigned"))
     setShowAssign(false)
     notifyCoachingCoreChanged()
+    await Promise.all([fetchPerformance(), fetchCompletions()])
   }
 
   if (pageLoading) {

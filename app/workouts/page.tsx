@@ -12,6 +12,7 @@ import Button from "@/components/ui/button"
 import ErrorStateBanner from "@/components/ui/error-state-banner"
 import SaasEmptyState from "@/components/ui/saas-empty-state"
 import { WorkoutsPageSkeleton } from "@/components/ui/page-skeletons"
+import { useCoachingCoreChanged } from "../hooks/useCoachingCoreChanged"
 import { useWorkoutAssignments } from "../hooks/useWorkoutAssignments"
 import type { Database } from "@/lib/database.types"
 import type { CoachWorkoutAssignment } from "@/lib/types/workout-assignments"
@@ -127,6 +128,11 @@ export default function WorkoutsPage() {
       setPageLoading(false)
     })
   }, [])
+
+  useCoachingCoreChanged(() => {
+    void fetchWorkoutPlans()
+    void fetchMembers()
+  })
 
   const assignMemberParam = searchParams.get("assignMember")
 

@@ -31,6 +31,7 @@ import type {
   ClientReminderType,
 } from "@/lib/types/client-reminders"
 import { premiumInputClass, premiumTextareaClass } from "@/lib/ui/premium-input"
+import { useCoachingCoreChanged } from "@/app/hooks/useCoachingCoreChanged"
 import { createClient } from "@/lib/supabase/client"
 
 type MemberClientRemindersSectionProps = {
@@ -210,6 +211,10 @@ export default function MemberClientRemindersSection({
   useEffect(() => {
     void loadReminders()
   }, [loadReminders])
+
+  useCoachingCoreChanged(() => {
+    void loadReminders()
+  })
 
   const resetForm = () => {
     setReminderType("general")

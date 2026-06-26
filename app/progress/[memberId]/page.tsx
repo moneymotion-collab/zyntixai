@@ -15,6 +15,7 @@ import {
   User,
 } from "lucide-react"
 import ProtectedShell from "../../components/ProtectedShell"
+import { useCoachingCoreChanged } from "@/app/hooks/useCoachingCoreChanged"
 import MemberGoalsDetailSection from "@/components/progress/MemberGoalsDetailSection"
 import MemberMetricCharts from "@/components/progress/MemberMetricCharts"
 import ProgressCoachSection from "@/components/progress/ProgressCoachSection"
@@ -151,6 +152,10 @@ export default function MemberProgressDetailPage() {
   useEffect(() => {
     void loadDetail()
   }, [loadDetail])
+
+  useCoachingCoreChanged(() => {
+    void loadDetail()
+  })
 
   useEffect(() => {
     setChartReady(true)

@@ -15,6 +15,7 @@ import {
 } from "@/lib/members/member-client-habits"
 import type { ClientHabit, ClientHabitType } from "@/lib/types/client-habits"
 import { premiumInputClass, premiumTextareaClass } from "@/lib/ui/premium-input"
+import { useCoachingCoreChanged } from "@/app/hooks/useCoachingCoreChanged"
 import { createClient } from "@/lib/supabase/client"
 
 type MemberHabitTrackerSectionProps = {
@@ -121,6 +122,10 @@ export default function MemberHabitTrackerSection({
   useEffect(() => {
     void loadHabits()
   }, [loadHabits])
+
+  useCoachingCoreChanged(() => {
+    void loadHabits()
+  })
 
   const resetForm = () => {
     setHabitName("")

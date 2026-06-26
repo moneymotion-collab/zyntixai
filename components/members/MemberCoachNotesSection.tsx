@@ -33,6 +33,7 @@ import {
   premiumInputClass,
   premiumTextareaClass,
 } from "@/lib/ui/premium-input"
+import { useCoachingCoreChanged } from "@/app/hooks/useCoachingCoreChanged"
 import { createClient } from "@/lib/supabase/client"
 
 type MemberCoachNotesSectionProps = {
@@ -173,6 +174,10 @@ export default function MemberCoachNotesSection({
   useEffect(() => {
     void loadNotes()
   }, [loadNotes])
+
+  useCoachingCoreChanged(() => {
+    void loadNotes()
+  })
 
   const filteredNotes = useMemo(
     () => filterClientNotes(notes, activeFilter),

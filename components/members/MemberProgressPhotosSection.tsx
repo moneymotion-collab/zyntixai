@@ -30,6 +30,7 @@ import {
   premiumInputClass,
   premiumTextareaClass,
 } from "@/lib/ui/premium-input"
+import { useCoachingCoreChanged } from "@/app/hooks/useCoachingCoreChanged"
 import { createClient } from "@/lib/supabase/client"
 
 type MemberProgressPhotosSectionProps = {
@@ -216,6 +217,10 @@ export default function MemberProgressPhotosSection({
   useEffect(() => {
     void loadPhotos()
   }, [loadPhotos])
+
+  useCoachingCoreChanged(() => {
+    void loadPhotos()
+  })
 
   useEffect(() => {
     if (!selectedFile) {

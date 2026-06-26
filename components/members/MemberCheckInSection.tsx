@@ -32,6 +32,7 @@ import {
   premiumInputClass,
   premiumTextareaClass,
 } from "@/lib/ui/premium-input"
+import { useCoachingCoreChanged } from "@/app/hooks/useCoachingCoreChanged"
 import { createClient } from "@/lib/supabase/client"
 
 type MemberCheckInSectionProps = {
@@ -240,6 +241,10 @@ export default function MemberCheckInSection({
   useEffect(() => {
     void loadCheckIns()
   }, [loadCheckIns])
+
+  useCoachingCoreChanged(() => {
+    void loadCheckIns()
+  })
 
   const todayCheckIn = useMemo(
     () => checkIns.find((checkIn) => checkIn.check_in_date === todayDate) ?? null,
