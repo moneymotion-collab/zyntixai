@@ -1,8 +1,9 @@
 ﻿"use client"
 
 import Link from "next/link"
-import { useCallback, useEffect, useMemo, useState } from "react"
+import { Suspense, useCallback, useEffect, useMemo, useState } from "react"
 import { useSearchParams } from "next/navigation"
+import { Loader2 } from "lucide-react"
 import AssignWorkoutModal from "../components/AssignWorkoutModal"
 import EditWorkoutPlanModal from "../components/EditWorkoutPlanModal"
 import ProtectedShell from "../components/ProtectedShell"
@@ -52,6 +53,20 @@ type Member = Database["public"]["Tables"]["members"]["Row"]
 type ToastState = ToastPayload & { variant: "success" | "error" }
 
 export default function WorkoutsPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex min-h-[40vh] items-center justify-center">
+          <Loader2 className="h-8 w-8 animate-spin text-gray-400" />
+        </div>
+      }
+    >
+      <WorkoutsPageContent />
+    </Suspense>
+  )
+}
+
+function WorkoutsPageContent() {
   const searchParams = useSearchParams()
   const supabase = createClient()
   const [workoutPlans, setWorkoutPlans] = useState<WorkoutPlan[]>([])

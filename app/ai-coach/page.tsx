@@ -1,6 +1,6 @@
 ﻿"use client"
 
-import { useCallback, useEffect, useRef, useState } from "react"
+import { Suspense, useCallback, useEffect, useRef, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import {
   ArrowLeft,
@@ -43,6 +43,20 @@ function formatThreadTime(iso: string) {
 }
 
 export default function AiCoachPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex min-h-[40vh] items-center justify-center">
+          <Loader2 className="h-8 w-8 animate-spin text-gray-400" />
+        </div>
+      }
+    >
+      <AiCoachPageContent />
+    </Suspense>
+  )
+}
+
+function AiCoachPageContent() {
   const searchParams = useSearchParams()
   const supabase = createClient()
   const scrollRef = useRef<HTMLDivElement>(null)
