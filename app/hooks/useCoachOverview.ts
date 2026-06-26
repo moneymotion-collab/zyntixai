@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 import { fetchCoachOverview } from "@/lib/coach-dashboard/fetch-coach-overview"
 import type { CoachOverviewData } from "@/lib/coach-dashboard/types"
+import { COACHING_CORE_CHANGED_EVENT } from "@/lib/coaching-core/notify"
 import { createClient } from "@/lib/supabase/client"
 import { useDebouncedCallback } from "./useDebouncedCallback"
 import { useRole } from "./useRole"
@@ -46,9 +47,14 @@ export function useCoachOverview() {
     void load()
 
     const onFocus = () => void load()
+    const onCoachingCoreChanged = () => void load()
     window.addEventListener("focus", onFocus)
+    window.addEventListener(COACHING_CORE_CHANGED_EVENT, onCoachingCoreChanged)
 
-    return () => window.removeEventListener("focus", onFocus)
+    return () => {
+      window.removeEventListener("focus", onFocus)
+      window.removeEventListener(COACHING_CORE_CHANGED_EVENT, onCoachingCoreChanged)
+    }
   }, [isCoach, roleLoading, load])
 
   useEffect(() => {
