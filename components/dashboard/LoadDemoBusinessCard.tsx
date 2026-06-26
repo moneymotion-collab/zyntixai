@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { CheckCircle2, Loader2, Sparkles } from "lucide-react"
 import GlassCard from "@/components/ui/glass-card"
+import { notifyCoachingCoreChanged } from "@/lib/coaching-core/notify"
 import {
   DEMO_WORKSPACE_LOAD_ACTION,
   DEMO_WORKSPACE_LOADING_LABEL,
@@ -55,6 +56,7 @@ export default function LoadDemoBusinessCard({
       }
 
       setStatus("success")
+      notifyCoachingCoreChanged()
       onSuccess?.()
     } catch {
       setStatus("error")

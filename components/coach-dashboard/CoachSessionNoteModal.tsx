@@ -6,6 +6,7 @@ import ProgressErrorBanner from "@/components/progress/ProgressErrorBanner"
 import AnimatedModal, { useMountAnimatedModal } from "@/components/ui/animated-modal"
 import { PROGRESS_PRO_BTN_PRIMARY } from "@/components/progress/progress-pro-ui"
 import { premiumTextareaClass } from "@/lib/ui/premium-input"
+import { notifyCoachingCoreChanged } from "@/lib/coaching-core/notify"
 import { updateSessionNotes } from "@/lib/coach-dashboard/session-actions"
 import type { TodaySession } from "@/lib/coach-dashboard/types"
 import { createClient } from "@/lib/supabase/client"
@@ -48,6 +49,7 @@ export default function CoachSessionNoteModal({
     }
 
     setSaving(false)
+    notifyCoachingCoreChanged()
     onSaved?.()
     requestClose()
   }

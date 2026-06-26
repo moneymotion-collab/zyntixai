@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Dumbbell, FileText, Loader2, Salad } from "lucide-react"
 import type { AiMessageContentType } from "@/lib/ai-coach/types"
 import type { AiCoachMessageRow } from "@/lib/ai-coach/messages"
+import { notifyCoachingCoreChanged } from "@/lib/coaching-core/notify"
 
 type MessageBubbleProps = {
   message: AiCoachMessageRow
@@ -41,6 +42,7 @@ export default function MessageBubble({
         setLocalError(data.error ?? "Failed to save.")
         return
       }
+      notifyCoachingCoreChanged()
       onSaved?.(label)
     } catch {
       setLocalError("Could not save.")

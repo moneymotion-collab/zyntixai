@@ -6,6 +6,7 @@ import ProgressErrorBanner from "@/components/progress/ProgressErrorBanner"
 import AnimatedModal, { useMountAnimatedModal } from "@/components/ui/animated-modal"
 import { PROGRESS_PRO_BTN_PRIMARY } from "@/components/progress/progress-pro-ui"
 import { premiumTextareaClass } from "@/lib/ui/premium-input"
+import { notifyCoachingCoreChanged } from "@/lib/coaching-core/notify"
 import { updateClientCheckinCoachNotes } from "@/lib/progress/client-checkins"
 import { createClient } from "@/lib/supabase/client"
 
@@ -122,6 +123,7 @@ export default function CoachCheckInFieldModal({
     }
 
     setSaving(false)
+    notifyCoachingCoreChanged()
     onSaved?.()
     requestClose()
   }

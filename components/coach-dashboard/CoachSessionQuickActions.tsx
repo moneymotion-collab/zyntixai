@@ -19,6 +19,7 @@ import {
 } from "@/lib/coach-dashboard/session-actions"
 import { isSessionCompleted } from "@/lib/coach-dashboard/map-coach-sessions"
 import type { TodaySession } from "@/lib/coach-dashboard/types"
+import { notifyCoachingCoreChanged } from "@/lib/coaching-core/notify"
 import { createClient } from "@/lib/supabase/client"
 
 type CoachSessionQuickActionsProps = {
@@ -58,6 +59,7 @@ export default function CoachSessionQuickActions({
 
     setCompleting(false)
     setToast(successToast("sessionCompleted"))
+    notifyCoachingCoreChanged()
     onSessionUpdated?.()
   }
 

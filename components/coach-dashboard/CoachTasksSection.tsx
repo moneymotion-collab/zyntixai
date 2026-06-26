@@ -22,6 +22,7 @@ import type {
   CoachTaskKind,
   CoachTaskPriority,
 } from "@/lib/coach-dashboard/compute-coach-tasks"
+import { notifyCoachingCoreChanged } from "@/lib/coaching-core/notify"
 import { updateMemberClientReminderStatus } from "@/lib/members/member-client-reminders"
 import { createClient } from "@/lib/supabase/client"
 
@@ -155,6 +156,7 @@ function CoachTaskCard({
         return
       }
 
+      notifyCoachingCoreChanged()
       onTaskUpdated?.()
     })
   }

@@ -6,6 +6,7 @@ import Toast, { type ToastPayload } from "@/app/components/Toast"
 import { successToast } from "@/lib/copy/success-toasts"
 import { EXERCISE_CATEGORIES, type Exercise } from "@/lib/exercise-library"
 import { filterExercises } from "@/lib/exercises/filterExercises"
+import { notifyCoachingCoreChanged } from "@/lib/coaching-core/notify"
 import { premiumInputClass, premiumSelectClass, premiumTextareaClass } from "@/lib/ui/premium-input"
 
 const MUSCLE_OPTIONS = EXERCISE_CATEGORIES.filter((group) => group !== "All")
@@ -116,6 +117,7 @@ export default function WorkoutBuilderPro() {
     }
 
     setToast(successToast("workoutCreated"))
+    notifyCoachingCoreChanged()
     setTitle("")
     setGoal("")
     setWeeks(4)
@@ -154,6 +156,7 @@ export default function WorkoutBuilderPro() {
     }
 
     setToast(successToast("workoutTemplateSaved"))
+    notifyCoachingCoreChanged()
     setSaving(false)
   }
 

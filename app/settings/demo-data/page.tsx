@@ -15,6 +15,7 @@ import { useIsDemoWorkspace } from "@/app/hooks/useIsDemoWorkspace"
 import { DashboardSectionHeader } from "@/components/coach-dashboard/coach-dashboard-ui"
 import GlassCard from "@/components/ui/glass-card"
 import SettingsNav from "@/components/settings/SettingsNav"
+import { notifyCoachingCoreChanged } from "@/lib/coaching-core/notify"
 import {
   DEMO_WORKSPACE_BANNER_TEXT,
   DEMO_WORKSPACE_CLEAR_DESCRIPTION,
@@ -77,6 +78,7 @@ export default function DemoDataPage() {
           ? `${DEMO_WORKSPACE_LOAD_SUCCESS} (${exercises} workout exercises).`
           : DEMO_WORKSPACE_LOAD_SUCCESS,
       )
+      notifyCoachingCoreChanged()
     } catch {
       setGenerateStatus("error")
       setErrorMessage("Could not load demo workspace.")
@@ -123,6 +125,7 @@ export default function DemoDataPage() {
       }
 
       setToast(toastMessage)
+      notifyCoachingCoreChanged()
     } catch {
       setClearStatus("error")
       setErrorMessage("Could not clear demo data.")

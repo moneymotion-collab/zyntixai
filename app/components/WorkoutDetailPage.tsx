@@ -334,6 +334,7 @@ export default function WorkoutDetailPage({
     await fetchPlanExercises()
     setPickerOpen(false)
     setSavingExercises(false)
+    notifyCoachingCoreChanged()
   }
 
   const assignWorkout = async () => {
