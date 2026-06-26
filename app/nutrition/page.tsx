@@ -1,12 +1,13 @@
 ﻿"use client"
 
-import { useCallback, useEffect, useMemo, useState } from "react"
+import { Suspense, useCallback, useEffect, useMemo, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { useForm } from "react-hook-form"
 import {
   Beef,
   Droplets,
   Flame,
+  Loader2,
   Plus,
   Target,
   User,
@@ -111,6 +112,20 @@ function FormField({
 }
 
 export default function NutritionPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex min-h-[40vh] items-center justify-center">
+          <Loader2 className="h-8 w-8 animate-spin text-gray-400" />
+        </div>
+      }
+    >
+      <NutritionPageContent />
+    </Suspense>
+  )
+}
+
+function NutritionPageContent() {
   const searchParams = useSearchParams()
   const supabase = createClient()
   const [plans, setPlans] = useState<NutritionPlan[]>([])
